@@ -102,14 +102,15 @@
 <Navbar />
 
 <div
-	class="min-h-screen bg-gradient-to-br from-purple-500/10 via-background to-blue-500/10 px-4 pt-24 pb-12"
+	class="min-h-screen bg-gradient-to-br from-purple-500/10 via-background to-blue-500/10 px-4 pt-24 pb-12 lg:pb-12"
 >
-	<div class="container mx-auto max-w-6xl">
+	<div class="container mx-auto max-w-6xl pb-24 lg:pb-0">
 		<!-- Header -->
 		<div class="mb-8 text-center">
 			<h1 class="mb-2 text-3xl font-bold md:text-4xl">
 				{t.title}
-				<span class="bg-gradient-to-r dark:from-white from-black to-blue-600 bg-clip-text text-transparent"
+				<span
+					class="bg-gradient-to-r from-black to-blue-600 bg-clip-text text-transparent dark:from-white"
 					>{t.playlist}</span
 				>
 			</h1>
@@ -124,7 +125,7 @@
 					<div
 						class="mb-4 flex aspect-square items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-white to-blue-500/20"
 					>
-						<img src="{currentSong.cover}" alt="" class="h-full w-full object-cover" />
+						<img src={currentSong.cover} alt="" class="h-full w-full object-cover" />
 					</div>
 
 					<h3 class="mb-1 text-lg font-bold">{currentSong.title}</h3>
@@ -208,13 +209,13 @@
 									: ''}"
 							>
 								<div
-									class="flex h-12 w-12 flex-shrink-0 items-center relative justify-center rounded bg-gradient-to-br from-white to-blue-500/20"
+									class="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded bg-gradient-to-br from-white to-blue-500/20"
 								>
-									<img src="{song.cover}" alt="" class="h-full w-full absolute z-0 object-cover" />
+									<img src={song.cover} alt="" class="absolute z-0 h-full w-full object-cover" />
 									{#if currentIndex === index && isPlaying}
-										<Pause class="h-5 w-5 z-10" />
+										<Pause class="z-10 h-5 w-5" />
 									{:else}
-										<Play class="h-5 w-5 z-10" />
+										<Play class="z-10 h-5 w-5" />
 									{/if}
 								</div>
 
@@ -249,5 +250,68 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
+
+<!-- Mobile Floating Player Bar (Fixed at Bottom) -->
+<div
+	class="fixed right-0 bottom-0 left-0 z-50 border-t border-border bg-card/95 p-3 shadow-2xl backdrop-blur-lg lg:hidden"
+>
+	<div class="flex items-center gap-3">
+		<!-- Album Cover Thumbnail -->
+		<div
+			class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded bg-gradient-to-br from-purple-500/20 to-blue-500/20"
+		>
+			<img src={currentSong.cover} alt="">
+		</div>
+
+		<!-- Song Info -->
+		<div class="min-w-0 flex-1">
+			<h3 class="truncate text-sm font-semibold">{currentSong.title}</h3>
+			<p class="truncate text-xs text-muted-foreground">{currentSong.artist}</p>
+		</div>
+
+		<!-- Playback Controls -->
+		<div class="flex flex-shrink-0 items-center gap-2">
+			<button
+				onclick={prevSong}
+				class="rounded-full p-2 transition-colors hover:bg-accent"
+				aria-label="Previous"
+			>
+				<SkipBack class="h-5 w-5" />
+			</button>
+
+			<button
+				onclick={togglePlay}
+				class="rounded-full bg-primary p-3 text-primary-foreground transition-transform hover:scale-105"
+				aria-label={isPlaying ? 'Pause' : 'Play'}
+			>
+				{#if isPlaying}
+					<Pause class="h-5 w-5" />
+				{:else}
+					<Play class="h-5 w-5" />
+				{/if}
+			</button>
+
+			<button
+				onclick={nextSong}
+				class="rounded-full p-2 transition-colors hover:bg-accent"
+				aria-label="Next"
+			>
+				<SkipForward class="h-5 w-5" />
+			</button>
+		</div>
+	</div>
+
+	<!-- Progress Bar -->
+	<div class="mt-2">
+		<input
+			type="range"
+			min="0"
+			max={duration || 100}
+			value={currentTime}
+			oninput={handleSeek}
+			class="h-1 w-full cursor-pointer appearance-none rounded-lg bg-muted [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
+		/>
 	</div>
 </div>

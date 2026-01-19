@@ -203,7 +203,13 @@
 		<div
 			class="mobile-nav flex items-center justify-between rounded-2xl px-4 py-3 shadow-lg md:hidden"
 		>
-			<a href="#home" onclick={(e) => handleNavClick(e, '#home')} class="text-xl font-bold"> 🚀 </a>
+			<a href="#home" onclick={(e) => handleNavClick(e, '#home')} class="text-xl font-bold">
+				{#if $theme === 'dark'}
+					<img src="images/logo-boday-white.png" class="w-10" alt="">
+				{:else}
+					<img src="images/logo-boday-black.png" class="w-10" alt="">
+				{/if}
+			</a>
 
 			<div class="flex items-center gap-2">
 				<!-- Spotify Button -->
@@ -230,8 +236,8 @@
 					class="rounded-lg p-2 transition-colors hover:bg-muted"
 					aria-label="Toggle language"
 				>
-					<span class="text-lg">
-						{$language === 'id' ? '🇬🇧' : '🇮🇩'}
+					<span class="text-sm">
+						{$language === 'id' ? 'EN' : 'ID'}
 					</span>
 				</button>
 
