@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '$lib/assets/logo-boday-black.png';
 	import { theme } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
 

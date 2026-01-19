@@ -11,8 +11,9 @@
 		email: '',
 		message: ''
 	});
-	let formSubmitted = $state(false);
 	let isSubmitting = $state(false);
+	let submitStatus = $state<'idle' | 'success' | 'error'>('idle');
+	let errorMessage = $state('');
 
 	// Reactive translations
 	const t = $derived(translations[$language].contact);
@@ -45,18 +46,48 @@
 	async function handleSubmit(e: Event) {
 		e.preventDefault();
 		isSubmitting = true;
+		submitStatus = 'idle';
+		errorMessage = '';
 
-		// Simulate form submission
-		await new Promise((resolve) => setTimeout(resolve, 1500));
+		try {
+			// Using Web3Forms API
+			const response = await fetch('https://api.web3forms.com/submit', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Accept: 'application/json'
+				},
+				body: JSON.stringify({
+					access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // User needs to get this from web3forms.com
+					name: formData.name,
+					email: formData.email,
+					message: formData.message,
+					to: 'raffayudapratama20@gmail.com',
+					subject: `Portfolio Contact from ${formData.name}`
+				})
+			});
 
-		formSubmitted = true;
-		isSubmitting = false;
+			const result = await response.json();
 
-		// Reset form after 3 seconds
-		setTimeout(() => {
-			formSubmitted = false;
-			formData = { name: '', email: '', message: '' };
-		}, 3000);
+			if (result.success) {
+				submitStatus = 'success';
+				// Reset form
+				formData = { name: '', email: '', message: '' };
+				// Auto hide success message after 5 seconds
+				setTimeout(() => {
+					submitStatus = 'idle';
+				}, 5000);
+			} else {
+				submitStatus = 'error';
+				errorMessage = result.message || 'Failed to send message';
+			}
+		} catch (error) {
+			submitStatus = 'error';
+			errorMessage = 'Network error. Please try again.';
+			console.error('Form submission error:', error);
+		} finally {
+			isSubmitting = false;
+		}
 	}
 </script>
 
@@ -76,7 +107,7 @@
 			<h2 class="mb-2 text-2xl font-bold md:text-3xl">
 				{t.title.split(' ')[0]}
 				{t.title.split(' ')[1]}
-				<span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+				<span class="bg-gradient-to-r from-white to-blue-600 bg-clip-text text-transparent"
 					>{t.title.split(' ').slice(2).join(' ')}</span
 				>
 			</h2>
@@ -147,84 +178,78 @@
 			</div>
 
 			<!-- Contact Form -->
-			<div
-				class="transition-all delay-400 duration-700"
+			<form
+				onsubmit={handleSubmit}
+				class="space-y-5 rounded-xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all delay-200 duration-700"
 				class:opacity-100={visible}
 				class:translate-x-0={visible}
 				class:opacity-0={!visible}
 				class:translate-x-10={!visible}
 			>
-				<form
-					onsubmit={handleSubmit}
-					class="space-y-5 rounded-xl border border-border bg-card/50 p-6 backdrop-blur-sm"
+				<div>
+					<label for="name" class="mb-1.5 block text-xs font-medium">{t.name}</label>
+					<input
+						type="text"
+						id="name"
+						bind:value={formData.name}
+						required
+						class="w-full rounded-lg border border-border bg-background px-4 py-3 transition-all outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+						placeholder={t.namePlaceholder}
+					/>
+				</div>
+
+				<div>
+					<label for="email" class="mb-1.5 block text-xs font-medium">{t.emailLabel}</label>
+					<input
+						type="email"
+						id="email"
+						bind:value={formData.email}
+						required
+						class="w-full rounded-lg border border-border bg-background px-4 py-3 transition-all outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+						placeholder={t.emailPlaceholder}
+					/>
+				</div>
+
+				<div>
+					<label for="message" class="mb-1.5 block text-xs font-medium">{t.message}</label>
+					<textarea
+						id="message"
+						rows="5"
+						bind:value={formData.message}
+						required
+						class="w-full resize-none rounded-lg border border-border bg-background px-4 py-3 transition-all outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+						placeholder={t.messagePlaceholder}
+					></textarea>
+				</div>
+
+				<button
+					type="submit"
+					disabled={isSubmitting}
+					class="w-full rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-all hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
 				>
-					{#if formSubmitted}
-						<div class="flex h-full items-center justify-center py-12">
-							<div class="animate-in space-y-4 text-center fade-in">
-								<div
-									class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10"
-								>
-									<Send class="h-8 w-8 text-green-500" />
-								</div>
-								<h3 class="text-lg font-bold text-green-500">{t.successTitle}</h3>
-								<p class="text-sm text-muted-foreground">{t.successMessage}</p>
-							</div>
-						</div>
-					{:else}
-						<div class="space-y-4">
-							<div>
-								<label for="name" class="mb-1.5 block text-xs font-medium">{t.name}</label>
-								<input
-									id="name"
-									type="text"
-									bind:value={formData.name}
-									required
-									class="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm transition-all focus:ring-2 focus:ring-primary focus:outline-none"
-									placeholder={t.namePlaceholder}
-								/>
-							</div>
+					{isSubmitting ? t.sending : t.send}
+				</button>
 
-							<div>
-								<label for="email" class="mb-1.5 block text-xs font-medium">{t.emailLabel}</label>
-								<input
-									id="email"
-									type="email"
-									bind:value={formData.email}
-									required
-									class="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm transition-all focus:ring-2 focus:ring-primary focus:outline-none"
-									placeholder={t.emailPlaceholder}
-								/>
-							</div>
+				<!-- Success Message -->
+				{#if submitStatus === 'success'}
+					<div
+						class="rounded-lg border border-green-500/20 bg-green-500/10 p-4 text-green-600 dark:text-green-400"
+					>
+						<p class="font-semibold">{t.successTitle}</p>
+						<p class="mt-1 text-sm">{t.successMessage}</p>
+					</div>
+				{/if}
 
-							<div>
-								<label for="message" class="mb-1.5 block text-xs font-medium">{t.message}</label>
-								<textarea
-									id="message"
-									bind:value={formData.message}
-									required
-									rows="4"
-									class="w-full resize-none rounded-lg border border-border bg-background px-4 py-2.5 text-sm transition-all focus:ring-2 focus:ring-primary focus:outline-none"
-									placeholder={t.messagePlaceholder}
-								></textarea>
-							</div>
-						</div>
-
-						<button
-							type="submit"
-							disabled={isSubmitting}
-							class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50 disabled:cursor-not-allowed disabled:opacity-50"
-						>
-							{#if isSubmitting}
-								<span class="animate-spin">⏳</span>
-								{t.sending}
-							{:else}
-								<Send class="h-4 w-4" />
-								{t.send}
-							{/if}
-						</button>
-					{/if}
-				</form>
-			</div>
+				<!-- Error Message -->
+				{#if submitStatus === 'error'}
+					<div
+						class="rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-red-600 dark:text-red-400"
+					>
+						<p class="font-semibold">Error</p>
+						<p class="mt-1 text-sm">{errorMessage}</p>
+					</div>
+				{/if}
+			</form>
 		</div>
 	</div>
 </section>
