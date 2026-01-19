@@ -58,7 +58,7 @@
 					Accept: 'application/json'
 				},
 				body: JSON.stringify({
-					access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // User needs to get this from web3forms.com
+					access_key: '5ab225c9-4c11-493b-8055-be30fd04c8b8',
 					name: formData.name,
 					email: formData.email,
 					message: formData.message,
