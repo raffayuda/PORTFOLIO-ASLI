@@ -50,20 +50,16 @@
 		errorMessage = '';
 
 		try {
-			// Using Web3Forms API
-			const response = await fetch('https://api.web3forms.com/submit', {
+			// Call our internal API route (access key is hidden on server)
+			const response = await fetch('/api/contact', {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json',
-					Accept: 'application/json'
+					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-					access_key: '5ab225c9-4c11-493b-8055-be30fd04c8b8',
 					name: formData.name,
 					email: formData.email,
-					message: formData.message,
-					to: 'raffayudapratama20@gmail.com',
-					subject: `Portfolio Contact from ${formData.name}`
+					message: formData.message
 				})
 			});
 
