@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { VITE_WEB3FORMS_ACCESS_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { json } from '@sveltejs/kit';
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -14,6 +14,17 @@ export const POST: RequestHandler = async ({ request }) => {
             );
         }
 
+        // Get access key from environment
+        const accessKey = env.VITE_WEB3FORMS_ACCESS_KEY;
+
+        if (!accessKey) {
+            console.error('Web3Forms access key not found in environment variables');
+            return json(
+                { success: false, message: 'Server configuration error' },
+                { status: 500 }
+            );
+        }
+
         // Send to Web3Forms API
         const response = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
@@ -22,7 +33,7 @@ export const POST: RequestHandler = async ({ request }) => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                access_key: VITE_WEB3FORMS_ACCESS_KEY,
+                access_key: accessKey,
                 name,
                 email,
                 message,
