@@ -33,7 +33,9 @@ export const POST: RequestHandler = async ({ request }) => {
             name,
             email,
             message,
-            subject: `Portfolio Contact from ${name}`
+            subject: `Portfolio Contact from ${name}`,
+            from_name: name,
+            replyto: email
         };
 
         console.log('Sending to Web3Forms with payload:', { ...payload, access_key: '***' });
