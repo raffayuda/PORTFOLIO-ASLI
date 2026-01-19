@@ -12,10 +12,10 @@ export const translations = {
         },
         // Hero Section
         hero: {
-            badge: 'Tersedia untuk Proyek Baru',
-            heading: 'Membangun Pengalaman Digital yang',
-            headingHighlight: 'Menakjubkan.',
-            description: 'Saya adalah seorang Frontend Engineer dan UI Designer yang berfokus pada menciptakan antarmuka yang bersih, aksesibel, dan berkinerja tinggi menggunakan teknologi web modern.',
+            badge: 'Mari Berdiskusi',
+            heading: 'Fullstack Developer & Problem Solver',
+            headingHighlight: '',
+            description: 'Saya Raffa Yuda Pratama. Saya merancang dan membangun sistem web lengkap, mulai dari antarmuka pengguna yang intuitif hingga manajemen database yang efisien.',
             ctaPrimary: 'Lihat Portfolio',
             ctaSecondary: 'Email Saya',
             techStack: 'Teknologi yang sering saya gunakan:'
@@ -24,7 +24,7 @@ export const translations = {
         about: {
             title: 'Tentang Saya',
             subtitle: 'Berkenalan dengan saya',
-            description: 'Saya adalah pengembang web yang passionate dengan fokus pada menciptakan pengalaman digital yang indah dan fungsional.',
+            description: 'Saya adalah Fullstack Developer yang passionate dengan fokus pada menciptakan pengalaman digital yang indah dan fungsional.',
             downloadCV: 'Unduh CV'
         },
         // Skills Section
@@ -108,10 +108,10 @@ export const translations = {
         },
         // Hero Section
         hero: {
-            badge: 'Available for New Projects',
-            heading: 'Building Amazing Digital',
-            headingHighlight: 'Experiences.',
-            description: 'I am a Frontend Engineer and UI Designer focused on creating clean, accessible, and high-performance interfaces using modern web technologies.',
+            badge: "Let's discuss",
+            heading: 'Fullstack Developer & Problem Solver',
+            headingHighlight: '',
+            description: 'My name is Raffa Yuda Pratama. I design and build complete web systems, from intuitive user interfaces to efficient database management.',
             ctaPrimary: 'View Portfolio',
             ctaSecondary: 'Email Me',
             techStack: 'Technologies I frequently use:'

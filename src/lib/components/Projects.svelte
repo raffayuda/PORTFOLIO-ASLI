@@ -4,6 +4,8 @@
 	import { translations } from '$lib/translations';
 	import { Github, ExternalLink } from '@lucide/svelte';
 	import { onMount } from 'svelte';
+	import { fade, scale } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 
 	let visible = $state(false);
 	let selectedCategory = $state('all');
@@ -48,7 +50,7 @@
 		>
 			<h2 class="mb-2 text-2xl font-bold md:text-3xl">
 				{t.title.split(' ')[0]}
-				<span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+				<span class="bg-gradient-to-r dark:from-white from-black to-blue-600 bg-clip-text text-transparent"
 					>{t.title.split(' ').slice(1).join(' ')}</span
 				>
 			</h2>
@@ -77,14 +79,11 @@
 
 		<!-- Projects Grid -->
 		<div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-			{#each filteredProjects as project, i}
+			{#each filteredProjects as project, i (project.id)}
 				<div
 					class="group overflow-hidden rounded-xl border border-border bg-card transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
-					style="transition-delay: {i * 100}ms"
-					class:opacity-100={visible}
-					class:translate-y-0={visible}
-					class:opacity-0={!visible}
-					class:translate-y-10={!visible}
+					in:scale={{ duration: 400, delay: i * 50, easing: quintOut, start: 0.9 }}
+					out:scale={{ duration: 200, easing: quintOut, start: 0.9 }}
 				>
 					<!-- Project Image -->
 					<div
@@ -93,12 +92,13 @@
 						<div
 							class="absolute inset-0 flex items-center justify-center text-6xl font-bold text-muted-foreground/20"
 						>
-							{project.title[$language].charAt(0)}
+							<img src={project.image} alt={project.title[$language]}>
 						</div>
 						<!-- Overlay on hover -->
 						<div
 							class="absolute inset-0 flex items-end justify-center gap-3 bg-gradient-to-t from-black/60 to-transparent pb-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 						>
+						{#if project.github}
 							<a
 								href={project.github}
 								target="_blank"
@@ -108,6 +108,8 @@
 							>
 								<Github class="h-4 w-4 text-black" />
 							</a>
+						{/if}
+						{#if project.demo}
 							<a
 								href={project.demo}
 								target="_blank"
@@ -117,6 +119,7 @@
 							>
 								<ExternalLink class="h-4 w-4 text-black" />
 							</a>
+						{/if}
 						</div>
 					</div>
 

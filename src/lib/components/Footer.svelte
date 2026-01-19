@@ -19,7 +19,7 @@
 
 <footer class="border-t border-border bg-card/50 backdrop-blur-sm">
 	<div class="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-		<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+		<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 			<!-- About Section -->
 			<div class="space-y-4">
 				<h3 class="text-lg font-semibold">{personalInfo.name}</h3>
@@ -77,17 +77,6 @@
 							{t.contact}
 						</a>
 					</li>
-				</ul>
-			</div>
-
-			<!-- Services -->
-			<div class="space-y-4">
-				<h3 class="text-lg font-semibold">{t.services}</h3>
-				<ul class="space-y-2">
-					<li class="text-sm text-muted-foreground">{t.webDev}</li>
-					<li class="text-sm text-muted-foreground">{t.uiDesign}</li>
-					<li class="text-sm text-muted-foreground">{t.consulting}</li>
-					<li class="text-sm text-muted-foreground">{t.codeReview}</li>
 				</ul>
 			</div>
 

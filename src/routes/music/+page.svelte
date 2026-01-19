@@ -109,7 +109,7 @@
 		<div class="mb-8 text-center">
 			<h1 class="mb-2 text-3xl font-bold md:text-4xl">
 				{t.title}
-				<span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+				<span class="bg-gradient-to-r dark:from-white from-black to-blue-600 bg-clip-text text-transparent"
 					>{t.playlist}</span
 				>
 			</h1>
@@ -122,13 +122,9 @@
 				<div class="sticky top-24 rounded-xl border border-border bg-card/50 p-6 backdrop-blur-sm">
 					<!-- Album Cover -->
 					<div
-						class="mb-4 flex aspect-square items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20"
+						class="mb-4 flex aspect-square items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-white to-blue-500/20"
 					>
-						<svg class="h-24 w-24 text-muted-foreground/30" fill="currentColor" viewBox="0 0 24 24">
-							<path
-								d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"
-							/>
-						</svg>
+						<img src="{currentSong.cover}" alt="" class="h-full w-full object-cover" />
 					</div>
 
 					<h3 class="mb-1 text-lg font-bold">{currentSong.title}</h3>
@@ -212,12 +208,13 @@
 									: ''}"
 							>
 								<div
-									class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded bg-gradient-to-br from-purple-500/20 to-blue-500/20"
+									class="flex h-12 w-12 flex-shrink-0 items-center relative justify-center rounded bg-gradient-to-br from-white to-blue-500/20"
 								>
+									<img src="{song.cover}" alt="" class="h-full w-full absolute z-0 object-cover" />
 									{#if currentIndex === index && isPlaying}
-										<Pause class="h-5 w-5" />
+										<Pause class="h-5 w-5 z-10" />
 									{:else}
-										<Play class="h-5 w-5" />
+										<Play class="h-5 w-5 z-10" />
 									{/if}
 								</div>
 

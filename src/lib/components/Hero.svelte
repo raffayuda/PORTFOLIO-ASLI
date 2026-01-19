@@ -103,46 +103,35 @@
 						<div class="h-2.5 w-2.5 rounded-full bg-green-500"></div>
 					</div>
 
-					<!-- Code Content -->
-					<div class="overflow-x-auto p-4 font-mono text-xs">
-						<pre class="text-foreground"><code
-								><span class="text-purple-600">import</span> <span class="text-foreground"
-									>&#123;</span
-								> <span class="text-blue-600">Designer</span><span class="text-foreground">,</span
-								> <span class="text-blue-600">Developer</span> <span class="text-foreground"
-									>&#125;</span
-								> <span class="text-purple-600">from</span> <span class="text-green-600"
-									>'@me/core'</span
-								><span class="text-foreground">;</span>
-
-<span class="text-purple-600">const</span> <span class="text-blue-600">Portfolio</span> <span
-									class="text-foreground">=</span
-								> <span class="text-foreground">()</span> <span class="text-purple-600">=&gt;</span
-								> <span class="text-foreground">&#123;</span>
-  <span class="text-purple-600">return</span> <span class="text-foreground">(</span>
-    <span class="text-foreground">&lt;</span><span class="text-green-600">Section</span> <span
-									class="text-blue-600">variant</span
-								><span class="text-foreground">=</span><span class="text-orange-600">"clean"</span
-								><span class="text-foreground">&gt;</span>
-      <span class="text-foreground">&lt;</span><span class="text-green-600">Creativity</span> <span
-									class="text-blue-600">level</span
-								><span class="text-foreground">=</span><span class="text-orange-600">"high"</span
-								> <span class="text-foreground">/&gt;</span>
-      <span class="text-foreground">&lt;</span><span class="text-green-600">Code</span> <span
-									class="text-blue-600">quality</span
-								><span class="text-foreground">=</span><span class="text-orange-600">"clean"</span
-								> <span class="text-foreground">/&gt;</span>
-      <span class="text-foreground">&lt;</span><span class="text-green-600">createAwesomeUI</span
-								><span class="text-foreground">()</span> <span class="text-foreground">/&gt;</span>
-    <span class="text-foreground">&lt;/</span><span class="text-green-600">Section</span><span
-									class="text-foreground">&gt;</span
+					<!-- Photo Content -->
+					<div class="p-4">
+						<div class="group relative">
+							<!-- Photo Container -->
+							<div class="aspect-[4/3] overflow-hidden rounded-lg border border-border bg-muted/20">
+								<!-- Photo dengan efek grayscale -->
+								<div
+									class="flex h-full w-full items-center justify-center bg-gradient-to-br from-purple-600/10 to-blue-600/10"
 								>
-  <span class="text-foreground">)</span><span class="text-foreground">;</span>
-<span class="text-foreground">&#125;;</span>
+									<div class="h-full w-full">
+										<img
+											src="images/boday-ganteng.png"
+											alt="Raffa Yuda Pratama"
+											class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+										/>
+									</div>
+								</div>
+							</div>
 
-<span class="text-purple-600">export default</span> <span class="text-blue-600">Portfolio</span
-								><span class="text-foreground">;</span></code
-							></pre>
+							<!-- Overlay efek saat hover -->
+							<div
+								class="pointer-events-none absolute inset-0 rounded-lg bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+							>
+								<div class="absolute right-0 bottom-0 left-0 p-4 text-white">
+									<p class="text-sm font-semibold">Raffa Yuda Pratama</p>
+									<p class="text-xs text-white/80">Fullstack Developer</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

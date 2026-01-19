@@ -50,7 +50,7 @@
 		>
 			<h2 class="mb-2 text-2xl font-bold md:text-3xl">
 				{t.title.split(' ')[0]}
-				<span class="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+				<span class="bg-gradient-to-r dark:from-white from-black to-blue-600 bg-clip-text text-transparent"
 					>{t.title.split(' ').slice(1).join(' ')}</span
 				>
 			</h2>

@@ -2,11 +2,11 @@
 // Data Portfolio - Konten Bilingual
 
 export const personalInfo = {
-    name: 'Your Name',
+    name: 'Raffa Yuda Pratama',
     title: 'Full Stack Developer',
     tagline: 'Creating beautiful & functional web experiences',
-    email: 'your.email@example.com',
-    location: 'Jakarta, Indonesia',
+    email: 'raffayudapratama20@gmail.com',
+    location: 'Bogor, Indonesia',
     avatar: '/avatar.jpg' // Add your photo to static folder
 };
 
@@ -23,10 +23,10 @@ export const bio = {
 };
 
 export const socialLinks = {
-    github: 'https://github.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourusername',
-    twitter: 'https://twitter.com/yourusername',
-    instagram: 'https://instagram.com/yourusername'
+    github: 'https://github.com/raffayuda',
+    linkedin: 'https://linkedin.com/in/raffayuda',
+    twitter: 'https://twitter.com/raffayuda',
+    instagram: 'https://instagram.com/raffayudapratama06'
 };
 
 export const skills = [
@@ -61,65 +61,81 @@ export const projects = [
     {
         id: 1,
         title: {
-            id: 'Platform E-Commerce',
-            en: 'E-Commerce Platform'
+            id: 'Kosakata Bahasa Inggris',
+            en: 'English Vocabulary',
         },
         description: {
-            id: 'Platform belanja online lengkap dengan integrasi pembayaran, dashboard admin, dan manajemen inventori real-time.',
-            en: 'Full-featured online shopping platform with payment integration, admin dashboard, and real-time inventory management.'
+            id: 'Platform belajar bahasa inggris yang lengkap dengan fitur Quiz, menyimpan kosakata, dan real-time inventory management.',
+            en: 'Full-featured online learning platform with Quiz, vocabulary saving, and real-time inventory management.'
         },
-        image: '/projects/ecommerce.jpg',
-        tags: ['Next.js', 'TypeScript', 'Prisma', 'Stripe'],
-        github: 'https://github.com/yourusername/ecommerce',
-        demo: 'https://demo.example.com',
+        image: '/images/projek1.png',
+        tags: ['Next.js', 'TypeScript', 'Prisma', 'Tailwind', 'PostgreSQL'],
+        github: 'https://github.com/raffayuda/vocabulary-english',
+        demo: 'https://vocabulary-english.vercel.app/',
         category: 'web'
     },
     {
         id: 2,
         title: {
-            id: 'Aplikasi Manajemen Tugas',
-            en: 'Task Management App'
+            id: 'Landing Page Platform Absensi',
+            en: 'Attendance Platform Landing Page'
         },
         description: {
-            id: 'Tool manajemen tugas kolaboratif dengan update real-time, fitur kolaborasi tim, dan papan kanban.',
-            en: 'Collaborative task management tool with real-time updates, team collaboration features, and kanban boards.'
+            id: 'Landing page platform absensi dengan desain yang modern, user friendly, dan juga responsive',
+            en: 'Attendance platform landing page with modern, user-friendly, and responsive design.'
         },
-        image: '/projects/taskapp.jpg',
-        tags: ['SvelteKit', 'Firebase', 'Tailwind'],
-        github: 'https://github.com/yourusername/taskapp',
-        demo: 'https://demo.example.com',
+        image: '/images/projek2.png',
+        tags: ['Laravel', 'Alpine.js', 'Tailwind', 'MySQL'],
+        github: 'https://github.com/raffayuda/proyek-absensi',
+        // demo: 'https://attendance-platform.vercel.app/',
         category: 'web'
     },
     {
         id: 3,
         title: {
-            id: 'Dashboard Cuaca',
-            en: 'Weather Dashboard'
+            id: 'Dashboard Absensi',
+            en: 'Attendance Dashboard'
         },
         description: {
-            id: 'Dashboard cuaca yang indah dengan prakiraan, peta interaktif, dan rekomendasi berbasis lokasi.',
-            en: 'Beautiful weather dashboard with forecasts, interactive maps, and location-based recommendations.'
+            id: 'Dashboard absensi yang memiliki fitur absensi manual dan QR Code, kelola jadwal, dan materi mata kuliah',
+            en: 'Attendance dashboard with manual and QR code attendance, schedule management, and course materials.'
         },
-        image: '/projects/weather.jpg',
-        tags: ['React', 'OpenWeather API', 'Chart.js'],
-        github: 'https://github.com/yourusername/weather',
-        demo: 'https://demo.example.com',
+        image: '/images/projek3.png',
+        tags: ['Laravel', 'Tailwind', 'MySQL'],
+        github: 'https://github.com/raffayuda/dashboard-joki-absen',
+        // demo: 'https://attendance-dashboard.vercel.app/',
         category: 'web'
     },
     {
         id: 4,
         title: {
-            id: 'Generator Portfolio',
-            en: 'Portfolio Generator'
+            id: 'Monitoring Peralatan Kantor',
+            en: 'Office Equipment Monitoring'
         },
         description: {
-            id: 'Generator website portfolio bertenaga AI yang membuat situs indah dari input pengguna.',
-            en: 'AI-powered portfolio website generator that creates beautiful sites from user input.'
+            id: 'Platform monitoring peralatan kantor yang memungkinkan pengguna untuk melacak inventaris dan aset mereka dengan fitur real-time dan kolaborasi tim.',
+            en: 'Office equipment monitoring platform that allows users to track their inventory and assets with real-time updates and team collaboration features.'
         },
-        image: '/projects/portfolio.jpg',
-        tags: ['Python', 'FastAPI', 'OpenAI', 'Svelte'],
-        github: 'https://github.com/yourusername/portfolio-gen',
-        demo: 'https://demo.example.com',
+        image: '/images/projek4.png',
+        tags: ['Laravel', 'Tailwind', 'MySQL'],
+        // github: 'https://github.com/raffayuda/office-equipment-monitoring',
+        // demo: 'https://office-equipment-monitoring.vercel.app/',
+        category: 'web'
+    },
+    {
+        id: 5,
+        title: {
+            id: 'DBSCAN Riwayat Gempa Bumi 2001 - 2023',
+            en: 'DBSCAN Earthquake History 2001 - 2023'
+        },
+        description: {
+            id: 'Clustering gempa bumi menggunakan algoritma DBSCAN dengan dataset gempa bumi dari tahun 2001 - 2023',
+            en: 'Clustering earthquake using DBSCAN algorithm with earthquake dataset from 2001 - 2023'
+        },
+        image: '/images/projek5.png',
+        tags: ['Python', 'DBSCAN', 'Matplotlib', 'Seaborn', 'Scikit-learn', 'GeoPandas'],
+        github: 'https://github.com/raffayuda/Machine-Learning/tree/main/pertemuan11',
+        // demo: 'https://office-equipment-monitoring.vercel.app/',
         category: 'ai'
     }
 ];
@@ -130,58 +146,77 @@ export const experience = [
         id: 1,
         type: 'work',
         title: {
-            id: 'Senior Full Stack Developer',
-            en: 'Senior Full Stack Developer'
+            id: 'Magang Tim IT',
+            en: 'IT Team Intern'
         },
-        company: 'Tech Company',
-        location: 'Jakarta, Indonesia',
+        company: 'PT. IHATEC',
+        location: 'Bogor, Jawa Barat',
         period: {
-            id: '2022 - Sekarang',
-            en: '2022 - Present'
+            id: '2025 - 2025',
+            en: '2025 - 2025'
         },
         description: {
-            id: 'Memimpin pengembangan aplikasi web, membimbing pengembang junior, dan merancang solusi yang scalable.',
-            en: 'Leading development of web applications, mentoring junior developers, and architecting scalable solutions.'
+            id: 'Membuat sistem monitoring dan maintenance peralatan kantor, serta membantu merancang database.',
+            en: 'Creating office equipment monitoring and maintenance systems, and also helping to design the database.'
         },
         icon: 'Briefcase'
     },
     {
         id: 2,
-        type: 'work',
+        type: 'education',
         title: {
-            id: 'Full Stack Developer',
-            en: 'Full Stack Developer'
+            id: 'Teknik Informatika',
+            en: 'Informatics Engineering'
         },
-        company: 'Startup Inc',
-        location: 'Remote',
+        company: 'STT Terpadu Nurul Fikri',
+        location: 'Depok, Jawa Barat',
         period: {
-            id: '2020 - 2022',
-            en: '2020 - 2022'
+            id: '2024 - Sekarang',
+            en: '2024 - Present'
         },
         description: {
-            id: 'Mengembangkan dan memelihara berbagai proyek klien menggunakan teknologi web modern.',
-            en: 'Developed and maintained multiple client projects using modern web technologies.'
+            id: 'Mempelajari ilmu informatika dan teknologi modern.',
+            en: 'Learning informatics and modern technology.'
         },
-        icon: 'Briefcase'
+        icon: 'GraduationCap'
     },
     {
         id: 3,
         type: 'education',
         title: {
-            id: 'Sarjana Ilmu Komputer',
-            en: 'Bachelor of Computer Science'
+            id: 'Rekayasa Perangkat Lunak',
+            en: 'Software Engineering'
         },
-        company: 'University Name',
-        location: 'Indonesia',
+        company: 'SMK INFOKOM Bogor',
+        location: 'Bogor, Jawa Barat',
         period: {
-            id: '2016 - 2020',
-            en: '2016 - 2020'
+            id: '2021 - 2024',
+            en: '2021 - 2024'
         },
         description: {
             id: 'Fokus pada rekayasa perangkat lunak, pengembangan web, dan sistem basis data.',
             en: 'Focused on software engineering, web development, and database systems.'
         },
         icon: 'GraduationCap'
+    },
+    {
+        id: 4,
+        type: 'work',
+        title: {
+            id: 'Magang Web Developer',
+            en: 'Web Developer Intern'
+        },
+        company: 'PT. IOWork Indonesia',
+        location: 'Bogor, Jawa Barat',
+        period: {
+            id: '2022 - 2022',
+            en: '2022 - 2022'
+        },
+        description: {
+            id: 'Fokus pada pengembangan aplikasi web yang modern, cepat, user friendly, dan juga responsive.',
+            en: 'Focused on developing modern, fast, user-friendly, and responsive web applications.'
+        },
+        icon: 'Briefcase'
     }
 ];
 

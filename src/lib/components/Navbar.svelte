@@ -80,7 +80,14 @@
 					onclick={(e) => handleNavClick(e, '#home')}
 					class="logo-circle flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition-transform hover:scale-110"
 				>
-					<span class="text-base font-bold">🚀</span>
+					<span class="text-base font-bold">
+						{#if $theme === 'dark'}
+							<img src="images/logo-boday-white.png" alt="">
+						{/if}
+						{#if $theme === 'light'}
+							<img src="images/logo-boday-black.png" alt="">
+						{/if}
+					</span>
 				</a>
 
 				<!-- Center: Nav Links -->
