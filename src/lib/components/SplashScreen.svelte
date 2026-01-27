@@ -70,7 +70,7 @@
 
 			<!-- Phase 2: Logo -->
 			{#if phase === 'logo' || phase === 'tagline' || phase === 'exit'}
-				<div class="logo-container" class:show-logo={phase !== 'text'}>
+				<div class="logo-container" class:show-logo={true}>
 					<!-- Particle effects -->
 					<div class="particles">
 						{#each Array(20) as _, i}
