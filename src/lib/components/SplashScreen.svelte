@@ -1,12 +1,23 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { theme } from '$lib/stores/theme';
 
 	export let onComplete: () => void;
 
 	let showSplash = true;
 	let phase: 'text' | 'logo' | 'tagline' | 'exit' = 'text';
 	let welcomeText = 'WELCOME';
+	let currentTheme: 'light' | 'dark' = 'dark';
+
+	// Subscribe to theme changes
+	theme.subscribe((value) => {
+		currentTheme = value;
+	});
+
+	// Reactive logo path based on theme
+	$: logoPath =
+		currentTheme === 'dark' ? '/images/logo-boday-white.png' : '/images/logo-boday-black.png';
 
 	onMount(() => {
 		// Phase 1: Welcome text (0-1.5s)
@@ -33,7 +44,12 @@
 </script>
 
 {#if showSplash}
-	<div class="splash-screen" class:exit={phase === 'exit'} transition:fade={{ duration: 300 }}>
+	<div
+		class="splash-screen"
+		class:exit={phase === 'exit'}
+		class:light={currentTheme === 'light'}
+		transition:fade={{ duration: 300 }}
+	>
 		<!-- Animated Background -->
 		<div class="background">
 			<div class="gradient-orb orb-1"></div>
@@ -68,7 +84,7 @@
 					<!-- Logo with glow -->
 					<div class="logo-wrapper">
 						<div class="logo-glow"></div>
-						<img src="/images/logo-boday-black.png" alt="R2B Logo" class="logo" />
+						<img src={logoPath} alt="R2B Logo" class="logo" />
 					</div>
 				</div>
 			{/if}
@@ -97,6 +113,45 @@
 		justify-content: center;
 		overflow: hidden;
 		background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+		transition: background 0.3s ease;
+	}
+
+	/* Light Mode Styles */
+	.splash-screen.light {
+		background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%);
+	}
+
+	.splash-screen.light .welcome-text {
+		color: #0f172a;
+		text-shadow:
+			0 0 30px rgba(100, 116, 139, 0.3),
+			0 0 60px rgba(100, 116, 139, 0.1);
+	}
+
+	.splash-screen.light .tagline-text {
+		color: #1e293b;
+		text-shadow: 0 2px 20px rgba(100, 116, 139, 0.3);
+	}
+
+	.splash-screen.light .gradient-orb {
+		opacity: 0.2;
+	}
+
+	.splash-screen.light .orb-1 {
+		background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+	}
+
+	.splash-screen.light .orb-2 {
+		background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+	}
+
+	.splash-screen.light .orb-3 {
+		background: linear-gradient(135deg, #94a3b8, #64748b);
+	}
+
+	.splash-screen.light .particle {
+		background: #1e293b;
+		box-shadow: 0 0 10px rgba(30, 41, 59, 0.6);
 	}
 
 	.splash-screen.exit {
@@ -122,7 +177,7 @@
 	.orb-1 {
 		width: 500px;
 		height: 500px;
-		background: linear-gradient(135deg, #6366f1, #8b5cf6);
+		background: linear-gradient(135deg, #334155, #475569);
 		top: -10%;
 		left: -10%;
 		animation-delay: 0s;
@@ -131,7 +186,7 @@
 	.orb-2 {
 		width: 400px;
 		height: 400px;
-		background: linear-gradient(135deg, #ec4899, #f43f5e);
+		background: linear-gradient(135deg, #64748b, #475569);
 		bottom: -10%;
 		right: -10%;
 		animation-delay: 2s;
@@ -140,7 +195,7 @@
 	.orb-3 {
 		width: 350px;
 		height: 350px;
-		background: linear-gradient(135deg, #3b82f6, #06b6d4);
+		background: linear-gradient(135deg, #475569, #1e293b);
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
@@ -167,8 +222,8 @@
 		letter-spacing: 0.2em;
 		color: #fff;
 		text-shadow:
-			0 0 30px rgba(99, 102, 241, 0.8),
-			0 0 60px rgba(99, 102, 241, 0.4);
+			0 0 30px rgba(148, 163, 184, 0.6),
+			0 0 60px rgba(148, 163, 184, 0.3);
 	}
 
 	.letter {
@@ -219,7 +274,7 @@
 		transform: translate(-50%, -50%);
 		width: 300px;
 		height: 300px;
-		background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+		background: radial-gradient(circle, rgba(148, 163, 184, 0.3) 0%, transparent 70%);
 		animation: glowPulse 2s ease-in-out infinite;
 	}
 
@@ -263,15 +318,15 @@
 		color: #e2e8f0;
 		letter-spacing: 0.15em;
 		text-transform: uppercase;
-		text-shadow: 0 2px 20px rgba(99, 102, 241, 0.5);
+		text-shadow: 0 2px 20px rgba(148, 163, 184, 0.4);
 	}
 
 	.tagline-line {
 		width: 0;
 		height: 2px;
-		background: linear-gradient(90deg, transparent, #6366f1, transparent);
+		background: linear-gradient(90deg, transparent, #94a3b8, transparent);
 		animation: lineExpand 0.8s ease-out 0.4s forwards;
-		box-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
+		box-shadow: 0 0 10px rgba(148, 163, 184, 0.6);
 	}
 
 	/* Animations */
