@@ -5,6 +5,7 @@
 	import SplashScreen from '$lib/components/SplashScreen.svelte';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { inject } from '@vercel/analytics';
 
 	let { children } = $props();
 	let showSplash = $state(false);
@@ -12,6 +13,9 @@
 
 	onMount(() => {
 		theme.init();
+
+		// Initialize Vercel Analytics
+		inject();
 
 		// Check if user has seen splash screen before
 		const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
