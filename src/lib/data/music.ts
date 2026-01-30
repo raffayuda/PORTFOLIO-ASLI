@@ -25,11 +25,11 @@ export const playlist: Song[] = [
     },
     {
         id: 2,
-        title: 'HIGH feat. Aleesia',
-        artist: 'JPB, Aleesia',
+        title: 'Waiting',
+        artist: 'Vicetone, Daisy Guttridge',
         album: 'Unknown',
         cover: '/images/music2.png',
-        duration: '2:33',
+        duration: '3:26',
         audioUrl: '/audio/music2.mp3',
         spotifyUrl: 'https://open.spotify.com/track/40riOy7x9W7GXjyGp4pjAv'
     },
