@@ -148,21 +148,21 @@ export const POST: RequestHandler = async ({ request }) => {
                                         <table width="100%" cellpadding="0" cellspacing="0" border="0">
                                             <!-- Social Icons -->
                                             <tr>
-                                                <td align="right" style="padding-bottom: 40px;">
-                                                    <table cellpadding="0" cellspacing="0" border="0" style="float: right;">
+                                                <td align="center" style="padding-bottom: 40px;">
+                                                    <table cellpadding="0" cellspacing="0" border="0" style="display: inline-block;">
                                                         <tr>
-                                                            <td style="padding-left: 12px;">
-                                                                <a href="https://github.com/raffayuda" style="display: inline-block; width: 36px; height: 36px; background-color: #d0d0d0; border-radius: 50%; text-align: center; text-decoration: none; padding: 6px;">
+                                                            <td style="padding: 0 6px;">
+                                                                <a href="https://github.com/raffayuda" style="display: inline-block; width: 36px; height: 36px; text-align: center; text-decoration: none; padding: 6px;">
                                                                     <img src="https://boday.my.id/images/github-icon.png" alt="GitHub" style="width: 24px; height: 24px; display: block;">
                                                                 </a>
                                                             </td>
-                                                            <td style="padding-left: 12px;">
-                                                                <a href="https://instagram.com/raffayudapratama06" style="display: inline-block; width: 36px; height: 36px; background-color: #d0d0d0; border-radius: 50%; text-align: center; text-decoration: none; padding: 6px;">
+                                                            <td style="padding: 0 6px;">
+                                                                <a href="https://instagram.com/raffayudapratama06" style="display: inline-block; width: 36px; height: 36px; text-align: center; text-decoration: none; padding: 6px;">
                                                                     <img src="https://boday.my.id/images/instagram-icon.png" alt="Instagram" style="width: 24px; height: 24px; display: block;">
                                                                 </a>
                                                             </td>
-                                                            <td style="padding-left: 12px;">
-                                                                <a href="https://linkedin.com/in/raffayuda" style="display: inline-block; width: 36px; height: 36px; background-color: #d0d0d0; border-radius: 50%; text-align: center; text-decoration: none; padding: 6px;">
+                                                            <td style="padding: 0 6px;">
+                                                                <a href="https://linkedin.com/in/raffayuda" style="display: inline-block; width: 36px; height: 36px; text-align: center; text-decoration: none; padding: 6px;">
                                                                     <img src="https://boday.my.id/images/linkedin-icon.png" alt="LinkedIn" style="width: 24px; height: 24px; display: block;">
                                                                 </a>
                                                             </td>
@@ -182,7 +182,7 @@ export const POST: RequestHandler = async ({ request }) => {
                                             <tr>
                                                 <td align="right" style="padding-top: 20px;">
                                                     <p style="margin: 0; font-size: 10px; color: #cccccc; text-align: right;">
-                                                        <a href="https://boday.my.id/unsubscribe" style="color: #cccccc; text-decoration: none;">Unsubscribe</a>
+                                                        <a href="https://boday.my.id" style="color: #cccccc; text-decoration: none;">boday.my.id</a>
                                                     </p>
                                                 </td>
                                             </tr>
