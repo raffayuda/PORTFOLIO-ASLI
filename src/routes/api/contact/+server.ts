@@ -53,113 +53,152 @@ export const POST: RequestHandler = async ({ request }) => {
             subject: `Portfolio Contact from ${name}`,
             html: `
                 <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta charset="utf-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                </head>
-                <body style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f5f5f5; padding: 40px 20px;">
-                        <tr>
-                            <td align="center">
-                                <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
-                                    
-                                    <!-- Header with Logo -->
-                                    <tr>
-                                        <td style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 40px 40px 30px 40px; text-align: center; position: relative;">
-                                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                                                <tr>
-                                                    <td align="center">
-                                                        <img src="https://boday.my.id/images/logo-boday-white.png" alt="Logo" style="height: 50px; margin-bottom: 20px; filter: invert(1) brightness(2);">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="center">
-                                                        <table cellpadding="0" cellspacing="0" border="0" style="display: inline-block;">
-                                                            <tr>
-                                                                <td style="vertical-align: middle; padding-right: 15px;">
-                                                                    <img src="https://boday.my.id/images/mascot.png" alt="Mascot" style="width: 60px; height: 60px; display: block;">
-                                                                </td>
-                                                                <td style="vertical-align: middle;">
-                                                                    <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 600; letter-spacing: -0.5px; text-align: left;">New Contact<br/>Message</h1>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    
-                                    <!-- Content -->
-                                    <tr>
-                                        <td style="padding: 40px;">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body style="margin: 0; padding: 0; background-color: white; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: white; padding: 40px 20px;">
+        <tr>
+            <td align="center">
+                <table width="680" cellpadding="0" cellspacing="0" border="0" style="background-color: #f5f5f5; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+                    
+                    <!-- Main Container -->
+                    <tr>
+                        <td style="padding: 0;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <!-- Left Content Column -->
+                                    <td style="width: 55%; vertical-align: top; padding: 60px 40px 60px 60px; background-color: #ffffff;">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                            <!-- Logo -->
+                                            <tr>
+                                                <td style="padding-bottom: 40px;">
+                                                    <img src="https://boday.my.id/images/logo-boday-black.png" alt="Logo" style="height: 40px; filter: brightness(0);">
+                                                </td>
+                                            </tr>
                                             
-                                            <!-- From Info Card -->
-                                            <div style="background-color: #fafafa; border-left: 3px solid #1a1a1a; padding: 20px; margin-bottom: 30px; border-radius: 4px;">
-                                                <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                                                    <tr>
-                                                        <td style="padding-bottom: 12px;">
-                                                            <span style="display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #666;">From</span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="padding-bottom: 8px;">
-                                                            <span style="font-size: 18px; font-weight: 600; color: #1a1a1a;">${name}</span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="mailto:${email}" style="color: #404040; text-decoration: none; font-size: 14px;">${email}</a>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
+                                            <!-- Navigation -->
+                                            <tr>
+                                                <td style="padding-bottom: 50px;">
+                                                    <table cellpadding="0" cellspacing="0" border="0">
+                                                        <tr>
+                                                            <td style="padding-right: 30px;">
+                                                                <a href="https://boday.my.id" style="color: #1a1a1a; text-decoration: none; font-size: 14px; font-weight: 600;">Home</a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="https://boday.my.id/portfolio" style="color: #999999; text-decoration: none; font-size: 14px; font-weight: 400;">Portfolio</a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            
+                                            <!-- Greeting -->
+                                            <tr>
+                                                <td style="padding-bottom: 20px;">
+                                                    <h1 style="margin: 0; font-size: 32px; font-weight: 700; color: #1a1a1a; line-height: 1.2;">From ${name}!</h1>
+                                                    <p style="margin: 0; font-size: 14px; color: #ddd;">
+                                                                    <a href="mailto:${email}" style="color: #ddd; text-decoration: none;">${email}</a>
+                                                    </p>
+                                                </td>
+                                            </tr>
                                             
                                             <!-- Message -->
-                                            <div style="margin-bottom: 30px;">
-                                                <span style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #666; margin-bottom: 15px;">Message</span>
-                                                <div style="background-color: #fafafa; padding: 24px; border-radius: 4px; color: #333; font-size: 15px; line-height: 1.7; border: 1px solid #e5e5e5;">
-                                                    ${message.replace(/\n/g, '<br>')}
-                                                </div>
-                                            </div>
+                                            <tr>
+                                                <td style="padding-bottom: 35px;">
+                                                    <p style="margin: 0; font-size: 14px; color: #666666; line-height: 1.7;">
+                                                        ${message.replace(/\n/g, '<br>')}
+                                                    </p>
+                                                </td>
+                                            </tr>
+    
+                                        
                                             
-                                            <!-- Reply Button -->
-                                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                                                <tr>
-                                                    <td align="center" style="padding: 20px 0;">
-                                                        <a href="mailto:${email}" style="display: inline-block; background-color: #1a1a1a; color: #ffffff; text-decoration: none; padding: 14px 40px; border-radius: 4px; font-weight: 500; font-size: 14px; letter-spacing: 0.5px;">Reply to ${name}</a>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                            <!-- CTA Button -->
+                                            <tr>
+                                                <td style="padding-bottom: 60px;">
+                                                    <table cellpadding="0" cellspacing="0" border="0">
+                                                        <tr>
+                                                            <td style="background-color: #4169e1; border-radius: 6px; padding: 14px 32px;">
+                                                                <a href="mailto:${email}" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 0.3px;">REPLY NOW</a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
                                             
-                                        </td>
-                                    </tr>
+                                            <!-- Footer Text -->
+                                            <tr>
+                                                <td>
+                                                    <p style="margin: 0; font-size: 12px; color: #999999; line-height: 1.6;">
+                                                        For further assistance, feel free to email us at<br>
+                                                        <a href="mailto:info@boday.my.id" style="color: #4169e1; text-decoration: none;">info@boday.my.id</a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
                                     
-                                    <!-- Footer -->
-                                    <tr>
-                                        <td style="background-color: #fafafa; padding: 30px 40px; border-top: 1px solid #e5e5e5;">
-                                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                                                <tr>
-                                                    <td style="text-align: center;">
-                                                        <p style="margin: 0 0 8px 0; color: #666; font-size: 12px; line-height: 1.5;">
-                                                            This message was sent from your portfolio contact form
-                                                        </p>
-                                                        <p style="margin: 0; color: #999; font-size: 11px;">
-                                                            <a href="https://boday.my.id" style="color: #1a1a1a; text-decoration: none; font-weight: 500;">boday.my.id</a>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                </body>
-                </html>
+                                    <!-- Right Mascot Column -->
+                                    <td style="width: 45%; vertical-align: middle; padding: 60px 40px; background-color: #f5f5f5; text-align: center; position: relative;">
+                                        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                            <!-- Social Icons -->
+                                            <tr>
+                                                <td align="right" style="padding-bottom: 40px;">
+                                                    <table cellpadding="0" cellspacing="0" border="0" style="float: right;">
+                                                        <tr>
+                                                            <td style="padding-left: 12px;">
+                                                                <a href="https://github.com/raffayuda" style="display: inline-block; width: 36px; height: 36px; background-color: #d0d0d0; border-radius: 50%; text-align: center; text-decoration: none; padding: 6px;">
+                                                                    <img src="https://boday.my.id/images/github-icon.png" alt="GitHub" style="width: 24px; height: 24px; display: block;">
+                                                                </a>
+                                                            </td>
+                                                            <td style="padding-left: 12px;">
+                                                                <a href="https://instagram.com/raffayudapratama06" style="display: inline-block; width: 36px; height: 36px; background-color: #d0d0d0; border-radius: 50%; text-align: center; text-decoration: none; padding: 6px;">
+                                                                    <img src="https://boday.my.id/images/instagram-icon.png" alt="Instagram" style="width: 24px; height: 24px; display: block;">
+                                                                </a>
+                                                            </td>
+                                                            <td style="padding-left: 12px;">
+                                                                <a href="https://linkedin.com/in/raffayuda" style="display: inline-block; width: 36px; height: 36px; background-color: #d0d0d0; border-radius: 50%; text-align: center; text-decoration: none; padding: 6px;">
+                                                                    <img src="https://boday.my.id/images/linkedin-icon.png" alt="LinkedIn" style="width: 24px; height: 24px; display: block;">
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            
+                                            <!-- Mascot Image -->
+                                            <tr>
+                                                <td align="center" style="padding-top: 20px;">
+                                                    <img src="https://boday.my.id/images/mascot.png" alt="Mascot" style="max-width: 280px; width: 100%; height: auto; display: block; margin: 0 auto;">
+                                                </td>
+                                            </tr>
+                                            
+                                            <!-- Attribution -->
+                                            <tr>
+                                                <td align="right" style="padding-top: 20px;">
+                                                    <p style="margin: 0; font-size: 10px; color: #cccccc; text-align: right;">
+                                                        <a href="https://boday.my.id/unsubscribe" style="color: #cccccc; text-decoration: none;">Unsubscribe</a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
             `
         };
 
