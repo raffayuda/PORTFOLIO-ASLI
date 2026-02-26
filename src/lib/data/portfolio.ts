@@ -137,6 +137,22 @@ export const projects = [
         github: 'https://github.com/raffayuda/Machine-Learning/tree/main/pertemuan11',
         // demo: 'https://office-equipment-monitoring.vercel.app/',
         category: 'ai'
+    },
+    {
+        id: 6,
+        title: {
+            id: 'Aplikasi Coffee Shop',
+            en: 'Coffee Shop Application'
+        },
+        description: {
+            id: 'Aplikasi coffee shop yang memungkinkan pengguna untuk memesan menu dan melihat daftar menu.',
+            en: 'Coffee shop application that allows users to order menu and view the menu list.'
+        },
+        image: '/images/projek6.png',
+        tags: ['Vue', 'Tailwind', 'PostgreSQL', 'Vercel', 'Prisma'],
+        github: 'https://github.com/raffayuda/coffeshop-artisan',
+        demo: 'https://coffeshop-artisan.vercel.app/',
+        category: 'web'
     }
 ];
 
