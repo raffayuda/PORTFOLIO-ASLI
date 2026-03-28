@@ -222,11 +222,11 @@ export const experience = [
             id: 'Magang Web Developer',
             en: 'Web Developer Intern'
         },
-        company: 'PT. IOWork Indonesia',
+        company: 'PT. Mega Kreasi Teknologi',
         location: 'Bogor, Jawa Barat',
         period: {
-            id: '2022 - 2022',
-            en: '2022 - 2022'
+            id: '2023 - 2023',
+            en: '2023 - 2023'
         },
         description: {
             id: 'Fokus pada pengembangan aplikasi web yang modern, cepat, user friendly, dan juga responsive.',
