@@ -7,7 +7,8 @@ export const personalInfo = {
     tagline: 'Creating beautiful & functional web experiences',
     email: 'raffayudapratama20@gmail.com',
     location: 'Bogor, Indonesia',
-    avatar: '/avatar.jpg' // Add your photo to static folder
+    avatar: '/avatar.jpg', // Add your photo to static folder
+    github: 'raffayuda'
 };
 
 // Bilingual Bio
@@ -60,6 +61,7 @@ export const skills = [
 export const projects = [
     {
         id: 1,
+        slug: 'english-vocabulary',
         title: {
             id: 'Kosakata Bahasa Inggris',
             en: 'English Vocabulary',
@@ -68,14 +70,25 @@ export const projects = [
             id: 'Platform belajar bahasa inggris yang lengkap dengan fitur Quiz, menyimpan kosakata, dan real-time inventory management.',
             en: 'Full-featured online learning platform with Quiz, vocabulary saving, and real-time inventory management.'
         },
+        longDescription: {
+            id: 'Platform pembelajaran bahasa Inggris interaktif yang dirancang untuk membantu pengguna memperluas kosakata mereka secara efektif. Dilengkapi dengan sistem quiz adaptif, penyimpanan kosakata personal, dan manajemen inventaris real-time. Aplikasi ini dibangun dengan arsitektur modern menggunakan Next.js dan PostgreSQL untuk performa optimal.',
+            en: 'An interactive English learning platform designed to help users effectively expand their vocabulary. Features an adaptive quiz system, personal vocabulary storage, and real-time inventory management. Built with modern architecture using Next.js and PostgreSQL for optimal performance.'
+        },
         image: '/images/projek1.png',
+        gallery: ['/images/projek1.png'],
         tags: ['Next.js', 'TypeScript', 'Prisma', 'Tailwind', 'PostgreSQL'],
         github: 'https://github.com/raffayuda/vocabulary-english',
         demo: 'https://vocabulary-english.vercel.app/',
-        category: 'web'
+        category: 'web',
+        features: {
+            id: ['Sistem quiz adaptif', 'Penyimpanan kosakata personal', 'Progress tracking', 'Responsive design'],
+            en: ['Adaptive quiz system', 'Personal vocabulary storage', 'Progress tracking', 'Responsive design']
+        },
+        year: 2024
     },
     {
         id: 2,
+        slug: 'attendance-landing-page',
         title: {
             id: 'Landing Page Platform Absensi',
             en: 'Attendance Platform Landing Page'
@@ -84,14 +97,24 @@ export const projects = [
             id: 'Landing page platform absensi dengan desain yang modern, user friendly, dan juga responsive',
             en: 'Attendance platform landing page with modern, user-friendly, and responsive design.'
         },
+        longDescription: {
+            id: 'Landing page profesional untuk platform absensi digital yang dirancang dengan pendekatan mobile-first. Menampilkan UI/UX modern dengan animasi halus, sistem navigasi intuitif, dan desain yang sepenuhnya responsive di semua perangkat.',
+            en: 'A professional landing page for a digital attendance platform designed with a mobile-first approach. Features modern UI/UX with smooth animations, intuitive navigation, and a fully responsive design across all devices.'
+        },
         image: '/images/projek2.png',
+        gallery: ['/images/projek2.png'],
         tags: ['Laravel', 'Alpine.js', 'Tailwind', 'MySQL'],
         github: 'https://github.com/raffayuda/proyek-absensi',
-        // demo: 'https://attendance-platform.vercel.app/',
-        category: 'web'
+        category: 'web',
+        features: {
+            id: ['Desain mobile-first', 'Animasi halus', 'SEO optimized', 'Cross-browser compatible'],
+            en: ['Mobile-first design', 'Smooth animations', 'SEO optimized', 'Cross-browser compatible']
+        },
+        year: 2024
     },
     {
         id: 3,
+        slug: 'attendance-dashboard',
         title: {
             id: 'Dashboard Absensi',
             en: 'Attendance Dashboard'
@@ -100,14 +123,24 @@ export const projects = [
             id: 'Dashboard absensi yang memiliki fitur absensi manual dan QR Code, kelola jadwal, dan materi mata kuliah',
             en: 'Attendance dashboard with manual and QR code attendance, schedule management, and course materials.'
         },
+        longDescription: {
+            id: 'Sistem dashboard absensi komprehensif yang mendukung pencatatan kehadiran melalui input manual maupun pemindaian QR Code. Dilengkapi dengan manajemen jadwal perkuliahan, pengelolaan materi mata kuliah, dan laporan kehadiran yang detail.',
+            en: 'A comprehensive attendance dashboard system supporting attendance recording through manual input and QR Code scanning. Equipped with course schedule management, course material management, and detailed attendance reports.'
+        },
         image: '/images/projek3.png',
+        gallery: ['/images/projek3.png'],
         tags: ['Laravel', 'Tailwind', 'MySQL'],
         github: 'https://github.com/raffayuda/dashboard-joki-absen',
-        // demo: 'https://attendance-dashboard.vercel.app/',
-        category: 'web'
+        category: 'web',
+        features: {
+            id: ['Absensi QR Code', 'Manajemen jadwal', 'Materi kuliah', 'Laporan kehadiran'],
+            en: ['QR Code attendance', 'Schedule management', 'Course materials', 'Attendance reports']
+        },
+        year: 2024
     },
     {
         id: 4,
+        slug: 'office-equipment-monitoring',
         title: {
             id: 'Monitoring Peralatan Kantor',
             en: 'Office Equipment Monitoring'
@@ -116,14 +149,23 @@ export const projects = [
             id: 'Platform monitoring peralatan kantor yang memungkinkan pengguna untuk melacak inventaris dan aset mereka dengan fitur real-time dan kolaborasi tim.',
             en: 'Office equipment monitoring platform that allows users to track their inventory and assets with real-time updates and team collaboration features.'
         },
+        longDescription: {
+            id: 'Platform monitoring peralatan kantor yang dirancang untuk memudahkan pelacakan inventaris dan aset perusahaan. Mendukung pembaruan real-time, kolaborasi tim, dan pelaporan otomatis untuk manajemen aset yang efisien.',
+            en: 'An office equipment monitoring platform designed to simplify company inventory and asset tracking. Supports real-time updates, team collaboration, and automated reporting for efficient asset management.'
+        },
         image: '/images/projek4.png',
+        gallery: ['/images/projek4.png'],
         tags: ['Laravel', 'Tailwind', 'MySQL'],
-        // github: 'https://github.com/raffayuda/office-equipment-monitoring',
-        // demo: 'https://office-equipment-monitoring.vercel.app/',
-        category: 'web'
+        category: 'web',
+        features: {
+            id: ['Tracking real-time', 'Kolaborasi tim', 'Pelaporan otomatis', 'Manajemen inventaris'],
+            en: ['Real-time tracking', 'Team collaboration', 'Automated reporting', 'Inventory management']
+        },
+        year: 2025
     },
     {
         id: 5,
+        slug: 'dbscan-earthquake',
         title: {
             id: 'DBSCAN Riwayat Gempa Bumi 2001 - 2023',
             en: 'DBSCAN Earthquake History 2001 - 2023'
@@ -132,14 +174,24 @@ export const projects = [
             id: 'Clustering gempa bumi menggunakan algoritma DBSCAN dengan dataset gempa bumi dari tahun 2001 - 2023',
             en: 'Clustering earthquake using DBSCAN algorithm with earthquake dataset from 2001 - 2023'
         },
+        longDescription: {
+            id: 'Proyek analisis data menggunakan algoritma DBSCAN untuk mengklasterisasi data gempa bumi Indonesia dari tahun 2001 hingga 2023. Menghasilkan visualisasi peta cluster yang informatif menggunakan GeoPandas dan Matplotlib.',
+            en: 'A data analysis project using the DBSCAN algorithm to cluster Indonesian earthquake data from 2001 to 2023. Produces informative cluster map visualizations using GeoPandas and Matplotlib.'
+        },
         image: '/images/projek5.png',
+        gallery: ['/images/projek5.png'],
         tags: ['Python', 'DBSCAN', 'Matplotlib', 'Seaborn', 'Scikit-learn', 'GeoPandas'],
         github: 'https://github.com/raffayuda/Machine-Learning/tree/main/pertemuan11',
-        // demo: 'https://office-equipment-monitoring.vercel.app/',
-        category: 'ai'
+        category: 'ai',
+        features: {
+            id: ['Clustering DBSCAN', 'Visualisasi peta', 'Analisis data 22 tahun', 'Interaktif plotting'],
+            en: ['DBSCAN clustering', 'Map visualization', '22-year data analysis', 'Interactive plotting']
+        },
+        year: 2024
     },
     {
         id: 6,
+        slug: 'coffee-shop-app',
         title: {
             id: 'Aplikasi Coffee Shop',
             en: 'Coffee Shop Application'
@@ -148,11 +200,21 @@ export const projects = [
             id: 'Aplikasi coffee shop yang memungkinkan pengguna untuk memesan menu dan melihat daftar menu.',
             en: 'Coffee shop application that allows users to order menu and view the menu list.'
         },
+        longDescription: {
+            id: 'Aplikasi coffee shop modern yang memungkinkan pelanggan untuk menjelajahi menu, melakukan pemesanan, dan mengelola pesanan mereka. Dibangun dengan Vue.js di frontend dan PostgreSQL dengan Prisma ORM di backend.',
+            en: 'A modern coffee shop application that allows customers to browse the menu, place orders, and manage their orders. Built with Vue.js on the frontend and PostgreSQL with Prisma ORM on the backend.'
+        },
         image: '/images/projek6.png',
+        gallery: ['/images/projek6.png'],
         tags: ['Vue', 'Tailwind', 'PostgreSQL', 'Vercel', 'Prisma'],
         github: 'https://github.com/raffayuda/coffeshop-artisan',
         demo: 'https://coffeshop-artisan.vercel.app/',
-        category: 'web'
+        category: 'web',
+        features: {
+            id: ['Sistem pemesanan', 'Manajemen menu', 'Keranjang belanja', 'Responsive UI'],
+            en: ['Ordering system', 'Menu management', 'Shopping cart', 'Responsive UI']
+        },
+        year: 2024
     }
 ];
 
@@ -264,6 +326,64 @@ export const projectCategories = [
         label: {
             id: 'AI/ML',
             en: 'AI/ML'
+        }
+    }
+];
+
+// Services data
+export const services = [
+    {
+        id: 'web-development',
+        icon: 'Code2',
+        title: { id: 'Pengembangan Web', en: 'Web Development' },
+        description: {
+            id: 'Membangun aplikasi web full-stack yang cepat, scalable, dan modern dengan teknologi terkini.',
+            en: 'Building fast, scalable, and modern full-stack web applications with cutting-edge technologies.'
+        }
+    },
+    {
+        id: 'ui-ux-design',
+        icon: 'Palette',
+        title: { id: 'Desain UI/UX', en: 'UI/UX Design' },
+        description: {
+            id: 'Merancang antarmuka pengguna yang intuitif dan pengalaman pengguna yang menarik.',
+            en: 'Designing intuitive user interfaces and engaging user experiences.'
+        }
+    },
+    {
+        id: 'mobile-development',
+        icon: 'Smartphone',
+        title: { id: 'Pengembangan Mobile', en: 'Mobile Development' },
+        description: {
+            id: 'Membuat aplikasi mobile cross-platform yang responsif dan performant.',
+            en: 'Creating responsive and performant cross-platform mobile applications.'
+        }
+    },
+    {
+        id: 'api-development',
+        icon: 'Server',
+        title: { id: 'Pengembangan API', en: 'API Development' },
+        description: {
+            id: 'Membangun RESTful API dan GraphQL yang aman, efisien, dan terdokumentasi.',
+            en: 'Building secure, efficient, and well-documented RESTful and GraphQL APIs.'
+        }
+    },
+    {
+        id: 'database-design',
+        icon: 'Database',
+        title: { id: 'Desain Database', en: 'Database Design' },
+        description: {
+            id: 'Merancang arsitektur database yang efisien dan optimal untuk kebutuhan aplikasi.',
+            en: 'Designing efficient and optimal database architectures for application needs.'
+        }
+    },
+    {
+        id: 'consulting',
+        icon: 'MessageSquare',
+        title: { id: 'Konsultasi', en: 'Consulting' },
+        description: {
+            id: 'Memberikan konsultasi teknis dan code review untuk meningkatkan kualitas proyek.',
+            en: 'Providing technical consulting and code reviews to improve project quality.'
         }
     }
 ];

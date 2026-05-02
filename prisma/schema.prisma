@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  // URL configured in prisma.config.ts
+}
+
+// ═══════════════════════════════════════
+// Comment model - stores comments for repos and projects
+// ═══════════════════════════════════════
+model Comment {
+  id        String   @id @default(cuid())
+  contextKey String  // e.g. "github-repo-name" or "project-slug"
+  name      String   @default("Anonymous")
+  message   String
+  reactions Json     @default("{}")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([contextKey])
+  @@map("comments")
+}
+
+// ═══════════════════════════════════════
+// GalleryItem model - stores certificates and documentation
+// ═══════════════════════════════════════
+model GalleryItem {
+  id          String   @id @default(cuid())
+  type        String   // "certificate" or "documentation"
+  titleId     String   // Indonesian title
+  titleEn     String   // English title
+  descId      String   // Indonesian description
+  descEn      String   // English description
+  issuer      String?  // Only for certificates
+  date        String
+  imageUrl    String
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([type])
+  @@map("gallery_items")
+}

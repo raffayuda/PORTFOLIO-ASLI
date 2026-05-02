@@ -48,5 +48,21 @@
 {/if}
 
 {#if splashComplete || !showSplash}
+	<div class="animated-bg" aria-hidden="true"></div>
+	<div class="pointer-events-none fixed inset-0 z-[-1]">
+		<div class="dot-pattern absolute inset-0 opacity-40"></div>
+		
+		<!-- Animated gradient orbs -->
+		<div class="hero-orb hero-orb-1"></div>
+		<div class="hero-orb hero-orb-2"></div>
+		<div class="hero-orb hero-orb-3"></div>
+		
+		<!-- Floating particles -->
+		<div class="hero-particles">
+			{#each Array(6) as _, i}
+				<div class="hero-particle" style="--delay: {i * 0.8}s; --x: {15 + i * 14}%; --size: {3 + (i % 3) * 2}px;"></div>
+			{/each}
+		</div>
+	</div>
 	{@render children()}
 {/if}
