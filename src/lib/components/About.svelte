@@ -1,21 +1,30 @@
 <script lang="ts">
-	import { personalInfo, bio, projects, skills as allSkills } from '$lib/data/portfolio';
+	import { personalInfo, bio, skills as allSkills } from '$lib/data/portfolio';
 	import { language } from '$lib/stores/language';
 	import { translations } from '$lib/translations';
 	import { User, MapPin, Code2, FolderGit2 } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 
 	let visible = $state(false);
+	let projectCount = $state(0);
 
 	const t = $derived(translations[$language].about);
 
-	const stats = [
-		{ icon: FolderGit2, value: projects.length + '+', labelKey: 'projects' as const },
+	const stats = $derived([
+		{ icon: FolderGit2, value: (projectCount ? projectCount : 0) + '+', labelKey: 'projects' as const },
 		{ icon: Code2, value: '3+', labelKey: 'experience' as const },
 		{ icon: User, value: allSkills.length + '+', labelKey: 'technologies' as const }
-	];
+	]);
 
 	onMount(() => {
+		// Fetch dynamic project count from DB
+		fetch('/api/projects')
+			.then((res) => res.json())
+			.then((data) => {
+				projectCount = Array.isArray(data.projects) ? data.projects.length : 0;
+			})
+			.catch(() => {});
+
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {

@@ -1,12 +1,21 @@
 import "dotenv/config";
 import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { randomBytes, scryptSync } from "node:crypto";
+import { projects } from "../src/lib/data/portfolio";
 
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL!,
 });
 
 const prisma = new PrismaClient({ adapter });
+
+// Same hashing scheme as src/lib/server/auth.ts (scrypt salt:hash)
+function hashPassword(password: string): string {
+  const salt = randomBytes(16).toString("hex");
+  const hash = scryptSync(password, salt, 64).toString("hex");
+  return `${salt}:${hash}`;
+}
 
 async function main() {
   console.log("🌱 Seeding database...\n");
@@ -113,6 +122,69 @@ async function main() {
 
   console.log("✅ Seeded sample comment:", comment.id);
   console.log("\n🎉 Seeding complete!");
+
+  // Seed Projects (from static portfolio data, editable later via admin)
+  let projectCount = 0;
+  for (const p of projects) {
+    await prisma.project.upsert({
+      where: { slug: p.slug },
+      update: {
+        titleId: p.title.id,
+        titleEn: p.title.en,
+        descriptionId: p.description.id,
+        descriptionEn: p.description.en,
+        longDescriptionId: p.longDescription?.id || "",
+        longDescriptionEn: p.longDescription?.en || "",
+        image: p.image,
+        gallery: p.gallery || [],
+        tags: p.tags || [],
+        github: p.github || null,
+        demo: p.demo || null,
+        category: p.category,
+        featuresId: p.features?.id || [],
+        featuresEn: p.features?.en || [],
+        year: p.year,
+        published: true,
+      },
+      create: {
+        slug: p.slug,
+        titleId: p.title.id,
+        titleEn: p.title.en,
+        descriptionId: p.description.id,
+        descriptionEn: p.description.en,
+        longDescriptionId: p.longDescription?.id || "",
+        longDescriptionEn: p.longDescription?.en || "",
+        image: p.image,
+        gallery: p.gallery || [],
+        tags: p.tags || [],
+        github: p.github || null,
+        demo: p.demo || null,
+        category: p.category,
+        featuresId: p.features?.id || [],
+        featuresEn: p.features?.en || [],
+        year: p.year,
+        published: true,
+      },
+    });
+    projectCount++;
+  }
+  console.log(`✅ Seeded ${projectCount} projects`);
+
+  // Seed Admin account. Username & password dikelola langsung dari database
+  // (default dibuat di sini: admin / admin123). Ubah via halaman /admin/settings.
+  const adminUsername = "admin";
+  const adminPassword = "admin123";
+  await prisma.admin.upsert({
+    where: { username: adminUsername },
+    update: {
+      passwordHash: hashPassword(adminPassword),
+    },
+    create: {
+      username: adminUsername,
+      passwordHash: hashPassword(adminPassword),
+    },
+  });
+  console.log(`✅ Seeded admin account: "${adminUsername}" (default password: "admin123")`);
 }
 
 main()

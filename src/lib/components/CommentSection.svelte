@@ -18,12 +18,14 @@
 	let showEmojiPicker = $state(false);
 	let loading = $state(true);
 	let isSubmitting = $state(false);
+	let isAdmin = $state(false);
 	let userReactions = $state<Record<string, string>>({});
 
 	const emojis = ['😀','😂','🔥','❤️','👍','👏','🎉','💯','🚀','✨','😍','🤔','👀','💪','🙏','⭐','💡','🎯','✅','😎'];
 
 	onMount(() => {
 		loadComments();
+		checkAdmin();
 		const saved = localStorage.getItem('portfolio_reactions');
 		if (saved) {
 			try {
@@ -31,6 +33,18 @@
 			} catch (e) {}
 		}
 	});
+
+	async function checkAdmin() {
+		try {
+			const res = await fetch('/api/admin/me');
+			if (res.ok) {
+				const data = await res.json();
+				isAdmin = data.authenticated === true;
+			}
+		} catch (e) {
+			isAdmin = false;
+		}
+	}
 
 	async function loadComments() {
 		loading = true;
@@ -211,13 +225,15 @@
 							<span class="text-xs font-semibold">{comment.name}</span>
 							<span class="text-[10px] text-muted-foreground">{timeAgo(comment.createdAt)}</span>
 						</div>
-						<button
-							onclick={() => deleteComment(comment.id)}
-							class="opacity-0 transition-opacity group-hover:opacity-100"
-							aria-label="Delete"
-						>
-							<Trash2 class="h-3 w-3 text-muted-foreground hover:text-destructive" />
-						</button>
+						{#if isAdmin}
+							<button
+								onclick={() => deleteComment(comment.id)}
+								class="opacity-0 transition-opacity group-hover:opacity-100"
+								aria-label="Delete"
+							>
+								<Trash2 class="h-3 w-3 text-muted-foreground hover:text-destructive" />
+							</button>
+						{/if}
 					</div>
 
 					<p class="mb-2 text-xs leading-relaxed text-foreground/85">{comment.message}</p>

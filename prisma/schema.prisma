@@ -9,6 +9,49 @@ datasource db {
 }
 
 // ═══════════════════════════════════════
+// Admin model - stores admin credentials (hashed password)
+// ═══════════════════════════════════════
+model Admin {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("admins")
+}
+
+// ═══════════════════════════════════════
+// Project model - stores portfolio projects (managed via admin)
+// ═══════════════════════════════════════
+model Project {
+  id                  String   @id @default(cuid())
+  slug                String   @unique
+  titleId             String
+  titleEn             String
+  descriptionId       String
+  descriptionEn       String
+  longDescriptionId   String
+  longDescriptionEn   String
+  image               String
+  gallery             Json     @default("[]")
+  tags                Json     @default("[]")
+  github              String?
+  demo                String?
+  category            String   @default("web")
+  featuresId          Json     @default("[]")
+  featuresEn          Json     @default("[]")
+  year                Int
+  published           Boolean  @default(true)
+  sortOrder           Int      @default(0)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([category])
+  @@map("projects")
+}
+
+// ═══════════════════════════════════════
 // Comment model - stores comments for repos and projects
 // ═══════════════════════════════════════
 model Comment {

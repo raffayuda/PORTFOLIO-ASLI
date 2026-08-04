@@ -1,16 +1,32 @@
 import type { PageLoad } from './$types';
-import { projects } from '$lib/data/portfolio';
+import { projects as staticProjects } from '$lib/data/portfolio';
+import { staticProjectToProject, type Project } from '$lib/types';
 
-export const load: PageLoad = ({ params }) => {
-    const project = projects.find((p) => p.slug === params.slug);
+export const load: PageLoad = async ({ params, fetch }) => {
+	try {
+		const [projectRes, listRes] = await Promise.all([
+			fetch(`/api/projects/${params.slug}`),
+			fetch('/api/projects')
+		]);
+		const projectData = await projectRes.json();
+		const listData = await listRes.json();
 
-    if (!project) {
-        return { project: null, prevProject: null, nextProject: null };
-    }
+		const project: Project | null = projectData.project || null;
+		const list: Project[] = listData.projects || [];
 
-    const index = projects.indexOf(project);
-    const prevProject = index > 0 ? projects[index - 1] : null;
-    const nextProject = index < projects.length - 1 ? projects[index + 1] : null;
+		// Fallback ke data statis jika API tidak mengembalikan data
+		const fallbackList = staticProjects.map(staticProjectToProject);
+		const resolvedList = list.length > 0 ? list : fallbackList;
+		const resolvedProject = project || fallbackList.find((p) => p.slug === params.slug) || null;
 
-    return { project, prevProject, nextProject };
+		const index = resolvedProject ? resolvedList.findIndex((p) => p.slug === resolvedProject.slug) : -1;
+
+		return {
+			project: resolvedProject,
+			prevProject: index > 0 ? resolvedList[index - 1] : null,
+			nextProject: index >= 0 && index < resolvedList.length - 1 ? resolvedList[index + 1] : null
+		};
+	} catch (e) {
+		return { project: null, prevProject: null, nextProject: null };
+	}
 };

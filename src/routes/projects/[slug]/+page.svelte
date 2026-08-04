@@ -3,8 +3,9 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import CommentSection from '$lib/components/CommentSection.svelte';
 	import { language } from '$lib/stores/language';
+	import { admin } from '$lib/stores/admin';
 	import { translations } from '$lib/translations';
-	import { Github, ExternalLink, ArrowLeft, ArrowRight, Calendar, Tag, CheckCircle2 } from '@lucide/svelte';
+	import { Github, ExternalLink, ArrowLeft, ArrowRight, Calendar, Tag, CheckCircle2, Pencil } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 
 	let { data } = $props();
@@ -15,6 +16,7 @@
 	onMount(() => {
 		visible = true;
 		window.scrollTo(0, 0);
+		admin.check();
 	});
 </script>
 
@@ -57,6 +59,14 @@
 						<span class="flex items-center gap-1.5"><Tag class="h-3.5 w-3.5" />{project.category.toUpperCase()}</span>
 					</div>
 					<div class="flex flex-wrap gap-3">
+						{#if $admin.authenticated}
+							<a
+								href="/projects?edit={project.id}"
+								class="glass inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold hover:border-primary/30"
+							>
+								<Pencil class="h-4 w-4" />Edit
+							</a>
+						{/if}
 						{#if project.demo}
 							<a href={project.demo} target="_blank" rel="noopener noreferrer"
 								class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:shadow-lg hover:shadow-primary/25">
@@ -108,8 +118,8 @@
 				<!-- Comment Section -->
 				<div class="glass rounded-2xl p-6">
 					<CommentSection
-						contextKey="project-{project.slug}"
-						title="{$language === 'id' ? 'Komentar untuk proyek ini' : 'Comments for this project'}"
+						contextKey={`project-${project.slug}`}
+						title={$language === 'id' ? 'Komentar untuk proyek ini' : 'Comments for this project'}
 					/>
 				</div>
 

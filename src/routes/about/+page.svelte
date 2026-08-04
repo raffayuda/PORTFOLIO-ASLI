@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import { personalInfo, bio, projects, skills as allSkills, experience, services } from '$lib/data/portfolio';
+	import { personalInfo, bio, skills as allSkills, experience, services } from '$lib/data/portfolio';
 	import { language } from '$lib/stores/language';
 	import { translations } from '$lib/translations';
 	import { User, MapPin, Code2, FolderGit2, Briefcase, GraduationCap, Heart, Coffee, Gamepad2, Music, Calendar, ArrowRight } from '@lucide/svelte';
@@ -9,12 +9,13 @@
 	import { onMount } from 'svelte';
 
 	let visible = $state(false);
+	let projectCount = $state(0);
 	const t = $derived(translations[$language].about);
 	const tExp = $derived(translations[$language].experience);
 	const tSvc = $derived(translations[$language].services);
 
 	const stats = $derived([
-		{ icon: FolderGit2, value: projects.length + '+', label: $language === 'id' ? 'Proyek' : 'Projects' },
+		{ icon: FolderGit2, value: (projectCount ? projectCount : 0) + '+', label: $language === 'id' ? 'Proyek' : 'Projects' },
 		{ icon: Code2, value: '3+', label: $language === 'id' ? 'Tahun Coding' : 'Years Coding' },
 		{ icon: User, value: allSkills.length + '+', label: $language === 'id' ? 'Teknologi' : 'Technologies' },
 		{ icon: Briefcase, value: experience.filter(e => e.type === 'work').length, label: $language === 'id' ? 'Pengalaman Kerja' : 'Work Experience' }
@@ -45,6 +46,14 @@
 	const workExp = $derived(experience.filter(e => e.type === 'work'));
 	const eduExp = $derived(experience.filter(e => e.type === 'education'));
 
+		visible = true;
+		fetch('/api/projects')
+			.then((res) => res.json())
+			.then((data) => {
+				projectCount = Array.isArray(data.projects) ? data.projects.length : 0;
+			})
+			.catch(() => {});
+	
 	onMount(() => { visible = true; });
 </script>
 

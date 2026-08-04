@@ -1,5 +1,6 @@
 import { json, type RequestHandler } from '@sveltejs/kit';
 import prisma from '$lib/prisma';
+import { requireAdmin } from '$lib/server/auth';
 
 /**
  * GET /api/comments?contextKey=xxx
@@ -66,9 +67,10 @@ export const POST: RequestHandler = async ({ request }) => {
 
 /**
  * DELETE /api/comments?id=xxx
- * Delete a comment by ID
+ * Delete a comment by ID (admin only)
  */
-export const DELETE: RequestHandler = async ({ url }) => {
+export const DELETE: RequestHandler = async ({ url, cookies }) => {
+	requireAdmin(cookies);
 	try {
 		const id = url.searchParams.get('id');
 		if (!id) {

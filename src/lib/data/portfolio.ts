@@ -53,6 +53,7 @@ export const skills = [
     { name: 'GitHub', devicon: 'devicon-github-original' },
     { name: 'Docker', devicon: 'devicon-docker-plain' },
     { name: 'Figma', devicon: 'devicon-figma-plain' },
+    { name: 'Affinity', customSvg: true },
     { name: 'Vercel', customSvg: true },
     { name: 'Firebase', devicon: 'devicon-firebase-plain' }
 ];
@@ -326,6 +327,13 @@ export const projectCategories = [
         label: {
             id: 'AI/ML',
             en: 'AI/ML'
+        }
+    },
+    {
+        id: 'design',
+        label: {
+            id: 'Design',
+            en: 'Design'
         }
     }
 ];

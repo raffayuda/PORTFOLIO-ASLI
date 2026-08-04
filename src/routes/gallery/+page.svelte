@@ -1,9 +1,11 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import GalleryForm from '$lib/components/GalleryForm.svelte';
 	import { language } from '$lib/stores/language';
+	import { admin } from '$lib/stores/admin';
 	import { translations } from '$lib/translations';
-	import { Award, Camera, X, ChevronLeft, ChevronRight, ExternalLink } from '@lucide/svelte';
+	import { Award, Camera, X, ChevronLeft, ChevronRight, ExternalLink, Pencil, Plus, ShieldCheck, Trash2 } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 
 	let visible = $state(false);
@@ -12,10 +14,55 @@
 	let activeTab = $state<'certificate' | 'documentation'>('certificate');
 	let items = $state<any[]>([]);
 	let loading = $state(true);
+	let showForm = $state(false);
+	let editing = $state<any>(null);
+	let notice = $state('');
+	let noticeError = $state('');
 
 	const t = $derived(translations[$language].gallery);
 
 	const currentItems = $derived(items.filter(i => i.type === activeTab));
+
+	function openNew() {
+		editing = null;
+		showForm = true;
+		notice = '';
+		noticeError = '';
+	}
+
+	function openEdit(item: any) {
+		editing = item;
+		showForm = true;
+		notice = '';
+		noticeError = '';
+	}
+
+	function closeForm() {
+		showForm = false;
+		editing = null;
+	}
+
+	async function onSaved() {
+		notice = 'Item galeri berhasil disimpan ✅';
+		showForm = false;
+		editing = null;
+		await fetchGallery();
+	}
+
+	async function deleteItem(item: any) {
+		if (!confirm(`Hapus "${item.titleId}" dari galeri?`)) return;
+		try {
+			const res = await fetch(`/api/gallery?id=${item.id}`, { method: 'DELETE' });
+			if (res.ok) {
+				notice = `"${item.titleId}" dihapus 🗑️`;
+				await fetchGallery();
+			} else {
+				noticeError = 'Gagal menghapus item';
+			}
+		} catch (e) {
+			noticeError = 'Terjadi kesalahan, coba lagi.';
+		}
+	}
 
 	async function fetchGallery() {
 		loading = true;
@@ -69,6 +116,7 @@
 
 	onMount(() => {
 		visible = true;
+		admin.check();
 		fetchGallery();
 	});
 </script>
@@ -124,6 +172,40 @@
 				</button>
 			</div>
 
+			<!-- Admin controls (only when logged in) -->
+			{#if $admin.authenticated}
+				<div class="mb-8">
+					<div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+						<div class="flex items-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
+							<ShieldCheck class="h-3.5 w-3.5" />
+							Mode Admin — {items.length} item
+						</div>
+						<button
+							onclick={openNew}
+							class="flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-all hover:shadow-lg hover:shadow-primary/25"
+						>
+							<Plus class="h-4 w-4" /> Tambah Item
+						</button>
+					</div>
+					{#if notice}
+						<div class="mb-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2.5 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+							{notice}
+						</div>
+					{/if}
+					{#if noticeError}
+						<div class="mb-3 rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-2.5 text-sm font-medium text-destructive">
+							{noticeError}
+						</div>
+					{/if}
+				</div>
+
+				{#if showForm}
+					{#key editing?.id ?? 'new'}
+						<GalleryForm item={editing} onsaved={onSaved} oncancel={closeForm} />
+					{/key}
+				{/if}
+			{/if}
+
 			<!-- Gallery Grid -->
 			{#if loading}
 				<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -168,6 +250,24 @@
 								{/if}
 								<p class="text-xs text-muted-foreground">{getDesc(item)}</p>
 								<p class="mt-2 text-[10px] text-muted-foreground/60">{item.date}</p>
+								{#if $admin.authenticated}
+									<div class="mt-2 flex items-center gap-1.5 border-t border-border/30 pt-2" onclick={(e) => e.stopPropagation()}>
+										<button
+											onclick={(e) => { e.stopPropagation(); openEdit(item); }}
+											class="flex h-7 w-7 items-center justify-center rounded-lg border border-border/50 text-muted-foreground transition-all hover:border-primary/40 hover:text-primary"
+											aria-label="Edit"
+										>
+											<Pencil class="h-3.5 w-3.5" />
+										</button>
+										<button
+											onclick={(e) => { e.stopPropagation(); deleteItem(item); }}
+											class="flex h-7 w-7 items-center justify-center rounded-lg border border-border/50 text-muted-foreground transition-all hover:border-destructive/40 hover:text-destructive"
+											aria-label="Hapus"
+										>
+											<Trash2 class="h-3.5 w-3.5" />
+										</button>
+									</div>
+								{/if}
 							</div>
 						</button>
 					{/each}

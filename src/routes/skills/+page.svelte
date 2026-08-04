@@ -5,6 +5,7 @@
 	import { language } from '$lib/stores/language';
 	import { translations } from '$lib/translations';
 	import { onMount } from 'svelte';
+	import SkillIcon from '$lib/components/SkillIcon.svelte';
 
 	let visible = $state(false);
 	const t = $derived(translations[$language].skills);
@@ -25,7 +26,7 @@
 		},
 		{
 			title: $language === 'id' ? 'DevOps & Tools' : 'DevOps & Tools',
-			items: skills.filter(s => ['Git', 'GitHub', 'Docker', 'Figma', 'Vercel'].includes(s.name))
+			items: skills.filter(s => ['Git', 'GitHub', 'Docker', 'Figma', 'Affinity', 'Vercel'].includes(s.name))
 		}
 	]);
 
@@ -66,9 +67,7 @@
 					<div class="marquee-track">
 						{#each [...row1, ...row1] as skill}
 							<div class="glass-subtle flex items-center gap-2.5 rounded-xl px-4 py-2.5 flex-shrink-0">
-								{#if skill.devicon}
-									<i class="{skill.devicon} text-xl text-muted-foreground"></i>
-								{/if}
+								<SkillIcon {skill} svgClass="h-5 w-5 text-muted-foreground" deviconClass="text-xl text-muted-foreground" />
 								<span class="text-xs font-semibold whitespace-nowrap">{skill.name}</span>
 							</div>
 						{/each}
@@ -78,9 +77,7 @@
 					<div class="marquee-track reverse">
 						{#each [...row2, ...row2] as skill}
 							<div class="glass-subtle flex items-center gap-2.5 rounded-xl px-4 py-2.5 flex-shrink-0">
-								{#if skill.devicon}
-									<i class="{skill.devicon} text-xl text-muted-foreground"></i>
-								{/if}
+								<SkillIcon {skill} svgClass="h-5 w-5 text-muted-foreground" deviconClass="text-xl text-muted-foreground" />
 								<span class="text-xs font-semibold whitespace-nowrap">{skill.name}</span>
 							</div>
 						{/each}
@@ -114,9 +111,7 @@
 						<div class="flex flex-wrap gap-2">
 							{#each cat.items as skill}
 								<div class="flex items-center gap-1.5 rounded-lg bg-accent/50 px-2.5 py-1.5 transition-all hover:bg-primary/10 hover:text-primary">
-									{#if skill.devicon}
-										<i class="{skill.devicon} text-sm"></i>
-									{/if}
+									<SkillIcon {skill} svgClass="h-4 w-4" deviconClass="text-sm" />
 									<span class="text-[11px] font-medium">{skill.name}</span>
 								</div>
 							{/each}

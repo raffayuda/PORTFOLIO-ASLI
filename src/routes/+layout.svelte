@@ -3,6 +3,7 @@
 	import favicon from '$lib/assets/logo-boday-black.png';
 	import { theme } from '$lib/stores/theme';
 	import SplashScreen from '$lib/components/SplashScreen.svelte';
+	import AdminBar from '$lib/components/AdminBar.svelte';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { inject } from '@vercel/analytics';
@@ -65,4 +66,5 @@
 		</div>
 	</div>
 	{@render children()}
+	<AdminBar />
 {/if}
