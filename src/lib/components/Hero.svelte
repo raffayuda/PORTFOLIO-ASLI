@@ -66,8 +66,12 @@
 			<div class="glass hero-card-2 group overflow-hidden rounded-2xl">
 				<div class="relative h-full min-h-[240px] md:min-h-0">
 					<img
-						src="images/boday-ganteng.png"
-						alt="Raffa Yuda Pratama"
+						src="/images/boday-ganteng.png"
+						alt="Raffa Yuda Pratama - Full Stack Developer"
+						width="640"
+						height="800"
+						fetchpriority="high"
+						decoding="async"
 						class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
 					/>
 					<div

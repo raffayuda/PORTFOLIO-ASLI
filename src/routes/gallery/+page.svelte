@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import GalleryForm from '$lib/components/GalleryForm.svelte';
 	import { language } from '$lib/stores/language';
 	import { admin } from '$lib/stores/admin';
@@ -123,10 +124,11 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<svelte:head>
-	<title>{t.title} - Raffa Yuda Pratama</title>
-	<meta name="description" content={$language === 'id' ? 'Galeri sertifikat dan dokumentasi kegiatan Raffa Yuda Pratama.' : 'Gallery of certificates and activity documentation by Raffa Yuda Pratama.'} />
-</svelte:head>
+<Seo
+	title="Galeri - Raffa Yuda Pratama"
+	description="Galeri sertifikat dan dokumentasi kegiatan Raffa Yuda Pratama: sertifikat pelatihan dan dokumentasi proyek."
+	path="/gallery"
+/>
 
 <div class="min-h-screen page-enter">
 	<Navbar />

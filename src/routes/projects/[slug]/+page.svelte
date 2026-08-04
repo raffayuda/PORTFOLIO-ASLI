@@ -2,6 +2,8 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import CommentSection from '$lib/components/CommentSection.svelte';
+	import Seo from '$lib/components/Seo.svelte';
+	import { SITE_URL } from '$lib/config';
 	import { language } from '$lib/stores/language';
 	import { admin } from '$lib/stores/admin';
 	import { translations } from '$lib/translations';
@@ -13,6 +15,22 @@
 
 	const t = $derived(translations[$language].projectDetail);
 
+	const projectJsonLd = $derived(
+		data.project
+			? {
+					'@context': 'https://schema.org',
+					'@type': 'CreativeWork',
+					'name': data.project.title[$language],
+					'description': data.project.description[$language],
+					'url': `${SITE_URL}/projects/${data.project.slug}`,
+					'image': `${SITE_URL}${data.project.image}`,
+					'datePublished': String(data.project.year),
+					'author': { '@type': 'Person', 'name': 'Raffa Yuda Pratama' },
+					'keywords': (data.project.tags || []).join(', ')
+				}
+			: null
+	);
+
 	onMount(() => {
 		visible = true;
 		window.scrollTo(0, 0);
@@ -20,14 +38,14 @@
 	});
 </script>
 
-<svelte:head>
-	{#if data.project}
-		<title>{data.project.title[$language]} - Raffa Yuda Pratama</title>
-		<meta name="description" content={data.project.description[$language]} />
-	{:else}
-		<title>Project Not Found</title>
-	{/if}
-</svelte:head>
+<Seo
+	title={data.project ? `${data.project.title[$language]} - Raffa Yuda Pratama` : 'Proyek Tidak Ditemukan - Raffa Yuda Pratama'}
+	description={data.project ? data.project.description[$language] : 'Proyek tidak ditemukan.'}
+	path={data.project ? `/projects/${data.project.slug}` : '/projects'}
+	image={data.project ? data.project.image : undefined}
+	type="article"
+	jsonLd={projectJsonLd}
+/>
 
 <div class="min-h-screen bg-background page-enter">
 	<Navbar />

@@ -2,18 +2,19 @@
     "name": "Raffa Yuda Pratama - Portfolio",
     "short_name": "RY Portfolio",
     "description": "Full Stack Developer Portfolio",
+    "lang": "id",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#0a0a0a",
     "theme_color": "#6366f1",
     "icons": [
         {
-            "src": "/favicon.png",
+            "src": "/images/logo-boday-black.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/favicon.png",
+            "src": "/images/logo-boday-black.png",
             "sizes": "512x512",
             "type": "image/png"
         }

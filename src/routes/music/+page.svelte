@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { playlist, type Song } from '$lib/data/music';
 	import { language } from '$lib/stores/language';
 	import { translations } from '$lib/translations';
@@ -95,9 +96,11 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Music Player - My Playlist</title>
-</svelte:head>
+<Seo
+	title="Musik - Raffa Yuda Pratama"
+	description="Daftar putar musik favorit Raffa Yuda Pratama."
+	path="/music"
+/>
 
 <Navbar />
 

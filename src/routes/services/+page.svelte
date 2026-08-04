@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { services } from '$lib/data/portfolio';
 	import { language } from '$lib/stores/language';
 	import { translations } from '$lib/translations';
@@ -16,10 +17,11 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Services - Raffa Yuda Pratama</title>
-	<meta name="description" content="Professional web development, UI/UX design, and consulting services by Raffa Yuda Pratama." />
-</svelte:head>
+<Seo
+	title="Layanan - Raffa Yuda Pratama"
+	description="Layanan profesional Raffa Yuda Pratama: pengembangan web, desain UI/UX, pengembangan mobile, API, desain database, dan konsultasi."
+	path="/services"
+/>
 
 <div class="min-h-screen page-enter">
 	<Navbar />

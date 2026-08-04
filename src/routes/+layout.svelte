@@ -2,6 +2,7 @@
 	import './layout.css';
 	import favicon from '$lib/assets/logo-boday-black.png';
 	import { theme } from '$lib/stores/theme';
+	import { language } from '$lib/stores/language';
 	import SplashScreen from '$lib/components/SplashScreen.svelte';
 	import AdminBar from '$lib/components/AdminBar.svelte';
 	import { onMount } from 'svelte';
@@ -11,6 +12,13 @@
 	let { children } = $props();
 	let showSplash = $state(false);
 	let splashComplete = $state(false);
+
+	// Sinkronkan atribut lang <html> dengan bahasa aktif (id/en)
+	$effect(() => {
+		if (browser) {
+			document.documentElement.lang = $language === 'en' ? 'en' : 'id';
+		}
+	});
 
 	onMount(() => {
 		theme.init();

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import ProjectForm from '$lib/components/ProjectForm.svelte';
 	import { projectCategories } from '$lib/data/portfolio';
 	import { language } from '$lib/stores/language';
@@ -103,10 +104,11 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Projects - Raffa Yuda Pratama</title>
-	<meta name="description" content="Explore projects built by Raffa Yuda Pratama — web apps, AI/ML, and more." />
-</svelte:head>
+<Seo
+	title="Proyek - Raffa Yuda Pratama"
+	description="Kumpulan proyek unggulan Raffa Yuda Pratama: aplikasi web, mobile, AI/ML, dan design. Lihat detail, teknologi, dan tautan demo/GitHub."
+	path="/projects"
+/>
 
 <div class="min-h-screen page-enter">
 	<Navbar />

@@ -1,3 +1,9 @@
-# allow crawling everything by default
+# Allow crawling everything by default
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /*?new=
+Disallow: /*?edit=
+
+Sitemap: https://boday.web.id/sitemap.xml

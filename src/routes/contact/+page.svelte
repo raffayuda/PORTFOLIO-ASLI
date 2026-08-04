@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import Contact from '$lib/components/Contact.svelte';
 	import { language } from '$lib/stores/language';
 	import { translations } from '$lib/translations';
@@ -35,10 +36,11 @@
 	onMount(() => { visible = true; });
 </script>
 
-<svelte:head>
-	<title>Contact - Raffa Yuda Pratama</title>
-	<meta name="description" content="Get in touch with Raffa Yuda Pratama for project inquiries." />
-</svelte:head>
+<Seo
+	title="Kontak - Raffa Yuda Pratama"
+	description="Hubungi Raffa Yuda Pratama untuk kolaborasi proyek, konsultasi, atau peluang kerja sama. Email: raffayudapratama20@gmail.com."
+	path="/contact"
+/>
 
 <div class="min-h-screen page-enter">
 	<Navbar />

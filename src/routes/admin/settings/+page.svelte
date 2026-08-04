@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { ArrowLeft, KeyRound, LogOut, Save, UserRound, ShieldCheck } from '@lucide/svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 
 	let { data } = $props();
@@ -60,9 +61,7 @@
 	const labelClass = 'mb-1 block text-[11px] font-semibold uppercase tracking-wide text-muted-foreground';
 </script>
 
-<svelte:head>
-	<title>Pengaturan Admin - Raffa Yuda Pratama</title>
-</svelte:head>
+<Seo title="Pengaturan Akun Admin - Raffa Yuda Pratama" path="/admin/settings" noindex />
 
 <div
 	class="flex min-h-screen items-center justify-center px-4 pt-24 pb-20 transition-opacity duration-700"

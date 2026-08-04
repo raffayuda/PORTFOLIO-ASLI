@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { ArrowLeft, Lock, LogIn, ShieldCheck, User } from '@lucide/svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { onMount } from 'svelte';
 
 	let username = $state('');
@@ -37,9 +38,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Admin Login - Raffa Yuda Pratama</title>
-</svelte:head>
+<Seo title="Admin Login - Raffa Yuda Pratama" path="/admin/login" noindex />
 
 <div class="flex min-h-screen items-center justify-center px-4 pt-24 pb-20">
 	<div

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { experience } from '$lib/data/portfolio';
 	import { language } from '$lib/stores/language';
 	import { translations } from '$lib/translations';
@@ -16,10 +17,11 @@
 	onMount(() => { visible = true; });
 </script>
 
-<svelte:head>
-	<title>Experience - Raffa Yuda Pratama</title>
-	<meta name="description" content="Work experience and education of Raffa Yuda Pratama." />
-</svelte:head>
+<Seo
+	title="Pengalaman & Pendidikan - Raffa Yuda Pratama"
+	description="Pengalaman kerja dan pendidikan Raffa Yuda Pratama: IT Team Intern di PT. IHATEC, Web Developer Intern, Teknik Informatika di STT Terpadu Nurul Fikri, dan RPL di SMK INFOKOM Bogor."
+	path="/experience"
+/>
 
 <div class="min-h-screen page-enter">
 	<Navbar />

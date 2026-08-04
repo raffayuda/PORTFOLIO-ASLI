@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { personalInfo, bio, skills as allSkills, experience, services } from '$lib/data/portfolio';
 	import { language } from '$lib/stores/language';
 	import { translations } from '$lib/translations';
@@ -57,10 +58,11 @@
 	onMount(() => { visible = true; });
 </script>
 
-<svelte:head>
-	<title>About - Raffa Yuda Pratama</title>
-	<meta name="description" content="Learn more about Raffa Yuda Pratama, a Full Stack Developer from Bogor, Indonesia." />
-</svelte:head>
+<Seo
+	title="Tentang Saya - Raffa Yuda Pratama"
+	description="Kenali Raffa Yuda Pratama, Full Stack Developer dari Bogor, Indonesia. Perjalanan, keahlian, pengalaman kerja, dan pendidikan."
+	path="/about"
+/>
 
 <div class="min-h-screen page-enter">
 	<Navbar />

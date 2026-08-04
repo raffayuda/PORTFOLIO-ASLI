@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { skills } from '$lib/data/portfolio';
 	import { language } from '$lib/stores/language';
 	import { translations } from '$lib/translations';
@@ -37,10 +38,11 @@
 	onMount(() => { visible = true; });
 </script>
 
-<svelte:head>
-	<title>Skills - Raffa Yuda Pratama</title>
-	<meta name="description" content="Technologies and skills mastered by Raffa Yuda Pratama." />
-</svelte:head>
+<Seo
+	title="Keahlian & Teknologi - Raffa Yuda Pratama"
+	description="Keahlian dan teknologi yang dikuasai Raffa Yuda Pratama: React, Next.js, SvelteKit, TypeScript, Node.js, Python, Laravel, PostgreSQL, dan DevOps."
+	path="/skills"
+/>
 
 <div class="min-h-screen page-enter">
 	<Navbar />

@@ -77,7 +77,7 @@ export const POST: RequestHandler = async ({ request }) => {
                                             <!-- Logo -->
                                             <tr>
                                                 <td style="padding-bottom: 40px;">
-                                                    <img src="https://boday.my.id/images/logo-boday-black.png" alt="Logo" style="height: 40px; filter: brightness(0);">
+                                                    <img src="https://boday.web.id/images/logo-boday-black.png" alt="Logo" style="height: 40px; filter: brightness(0);">
                                                 </td>
                                             </tr>
                                             
@@ -87,10 +87,10 @@ export const POST: RequestHandler = async ({ request }) => {
                                                     <table cellpadding="0" cellspacing="0" border="0">
                                                         <tr>
                                                             <td style="padding-right: 30px;">
-                                                                <a href="https://boday.my.id" style="color: #1a1a1a; text-decoration: none; font-size: 14px; font-weight: 600;">Home</a>
+                                                                <a href="https://boday.web.id" style="color: #1a1a1a; text-decoration: none; font-size: 14px; font-weight: 600;">Home</a>
                                                             </td>
                                                             <td>
-                                                                <a href="https://boday.my.id/portfolio" style="color: #999999; text-decoration: none; font-size: 14px; font-weight: 400;">Portfolio</a>
+                                                                <a href="https://boday.web.id/portfolio" style="color: #999999; text-decoration: none; font-size: 14px; font-weight: 400;">Portfolio</a>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -136,7 +136,7 @@ export const POST: RequestHandler = async ({ request }) => {
                                                 <td>
                                                     <p style="margin: 0; font-size: 12px; color: #999999; line-height: 1.6;">
                                                         For further assistance, feel free to email us at<br>
-                                                        <a href="mailto:info@boday.my.id" style="color: #4169e1; text-decoration: none;">info@boday.my.id</a>
+                                                        <a href="mailto:info@boday.web.id" style="color: #4169e1; text-decoration: none;">info@boday.web.id</a>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -153,17 +153,17 @@ export const POST: RequestHandler = async ({ request }) => {
                                                         <tr>
                                                             <td style="padding: 0 6px;">
                                                                 <a href="https://github.com/raffayuda" style="display: inline-block; width: 36px; height: 36px; text-align: center; text-decoration: none; padding: 6px;">
-                                                                    <img src="https://boday.my.id/images/github-icon.png" alt="GitHub" style="width: 24px; height: 24px; display: block;">
+                                                                    <img src="https://boday.web.id/images/github-icon.png" alt="GitHub" style="width: 24px; height: 24px; display: block;">
                                                                 </a>
                                                             </td>
                                                             <td style="padding: 0 6px;">
                                                                 <a href="https://instagram.com/raffayudapratama06" style="display: inline-block; width: 36px; height: 36px; text-align: center; text-decoration: none; padding: 6px;">
-                                                                    <img src="https://boday.my.id/images/instagram-icon.png" alt="Instagram" style="width: 24px; height: 24px; display: block;">
+                                                                    <img src="https://boday.web.id/images/instagram-icon.png" alt="Instagram" style="width: 24px; height: 24px; display: block;">
                                                                 </a>
                                                             </td>
                                                             <td style="padding: 0 6px;">
                                                                 <a href="https://linkedin.com/in/raffayuda" style="display: inline-block; width: 36px; height: 36px; text-align: center; text-decoration: none; padding: 6px;">
-                                                                    <img src="https://boday.my.id/images/linkedin-icon.png" alt="LinkedIn" style="width: 24px; height: 24px; display: block;">
+                                                                    <img src="https://boday.web.id/images/linkedin-icon.png" alt="LinkedIn" style="width: 24px; height: 24px; display: block;">
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -174,7 +174,7 @@ export const POST: RequestHandler = async ({ request }) => {
                                             <!-- Mascot Image -->
                                             <tr>
                                                 <td align="center" style="padding-top: 20px;">
-                                                    <img src="https://boday.my.id/images/mascot.png" alt="Mascot" style="max-width: 280px; width: 100%; height: auto; display: block; margin: 0 auto;">
+                                                    <img src="https://boday.web.id/images/mascot.png" alt="Mascot" style="max-width: 280px; width: 100%; height: auto; display: block; margin: 0 auto;">
                                                 </td>
                                             </tr>
                                             
@@ -182,7 +182,7 @@ export const POST: RequestHandler = async ({ request }) => {
                                             <tr>
                                                 <td align="right" style="padding-top: 20px;">
                                                     <p style="margin: 0; font-size: 10px; color: #cccccc; text-align: right;">
-                                                        <a href="https://boday.my.id" style="color: #cccccc; text-decoration: none;">boday.my.id</a>
+                                                        <a href="https://boday.web.id" style="color: #cccccc; text-decoration: none;">boday.web.id</a>
                                                     </p>
                                                 </td>
                                             </tr>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import CommentSection from '$lib/components/CommentSection.svelte';
 	import { personalInfo } from '$lib/data/portfolio';
 	import { language } from '$lib/stores/language';
@@ -70,10 +71,11 @@
 	}
 </script>
 
-<svelte:head>
-	<title>GitHub - Raffa Yuda Pratama</title>
-	<meta name="description" content="Explore Raffa Yuda Pratama's GitHub repositories and contributions." />
-</svelte:head>
+<Seo
+	title="GitHub - Raffa Yuda Pratama"
+	description="Jelajahi repository dan kontribusi GitHub Raffa Yuda Pratama (@raffayuda): proyek web, mobile, dan AI/ML."
+	path="/github"
+/>
 
 <div class="min-h-screen page-enter">
 	<Navbar />
