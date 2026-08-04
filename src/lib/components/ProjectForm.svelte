@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { X } from '@lucide/svelte';
+	import { Plus, X } from '@lucide/svelte';
 	import type { Project } from '$lib/types';
+	import ImageUpload from '$lib/components/ImageUpload.svelte';
 
 	let {
 		project = null,
@@ -37,6 +38,42 @@
 	let error = $state('');
 
 	const categories = ['web', 'mobile', 'ai', 'design', 'other'];
+
+	const galleryItems = $derived(fGallery.split(',').map((s) => s.trim()).filter(Boolean));
+	let galleryUploading = $state(false);
+	let galleryUploadError = $state('');
+
+	function addToGallery(url: string) {
+		fGallery = fGallery ? `${fGallery}, ${url}` : url;
+	}
+
+	function removeFromGallery(url: string) {
+		fGallery = fGallery.split(',').map((s) => s.trim()).filter((u) => u && u !== url).join(', ');
+	}
+
+	async function uploadToGallery(e: Event) {
+		const input = e.target as HTMLInputElement;
+		const file = input.files?.[0];
+		if (!file) return;
+		galleryUploading = true;
+		galleryUploadError = '';
+		try {
+			const fd = new FormData();
+			fd.append('file', file);
+			const res = await fetch('/api/admin/upload', { method: 'POST', body: fd });
+			const data = await res.json();
+			if (!res.ok) {
+				galleryUploadError = data.error || 'Upload gagal';
+				return;
+			}
+			addToGallery(data.url);
+		} catch (err) {
+			galleryUploadError = 'Upload gagal, coba lagi.';
+		} finally {
+			galleryUploading = false;
+			input.value = '';
+		}
+	}
 
 	function slugify(text: string): string {
 		return (
@@ -117,12 +154,50 @@
 
 	<div class="grid gap-4 md:grid-cols-2">
 		<div>
-			<label class={labelClass}>Judul (Indonesia) *</label>
-			<input bind:value={fTitleId} class={inputClass} placeholder="cth: Aplikasi Coffee Shop" />
+			<ImageUpload value={fImage} label="Gambar Utama *" />
 		</div>
-		<div>
-			<label class={labelClass}>Judul (English) *</label>
-			<input bind:value={fTitleEn} class={inputClass} placeholder="cth: Coffee Shop Application" />
+		<div class="md:col-span-2">
+			<div class="mb-1 flex items-center justify-between">
+				<span class={labelClass}>Galeri Gambar</span>
+				<label
+					class="flex cursor-pointer items-center gap-1.5 rounded-lg border border-dashed border-border/60 px-3 py-1.5 text-xs text-muted-foreground transition-all hover:border-primary/40 hover:text-primary"
+				>
+					{#if galleryUploading}
+						<div class="h-3 w-3 animate-spin rounded-full border-2 border-primary border-t-transparent"></div>
+						Mengunggah...
+					{:else}
+						<Plus class="h-3.5 w-3.5" /> Tambah Gambar
+					{/if}
+					<input
+						type="file"
+						accept="image/png,image/jpeg,image/webp,image/gif,image/avif"
+						class="hidden"
+						onchange={uploadToGallery}
+						disabled={galleryUploading}
+					/>
+				</label>
+			</div>
+			{#if galleryItems.length > 0}
+				<div class="flex flex-wrap gap-2">
+					{#each galleryItems as url, i (url)}
+						<div class="group relative flex-shrink-0">
+							<img src={url} alt={`Galeri ${i + 1}`} class="h-16 w-20 rounded-lg border border-border/40 object-cover" />
+							<button
+								onclick={() => removeFromGallery(url)}
+								class="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-destructive text-white opacity-0 transition-opacity group-hover:opacity-100"
+								aria-label="Hapus gambar galeri"
+							>
+								<X class="h-3 w-3" />
+							</button>
+						</div>
+					{/each}
+				</div>
+			{:else}
+				<p class="text-xs text-muted-foreground/70">Belum ada gambar galeri.</p>
+			{/if}
+			{#if galleryUploadError}
+				<p class="mt-1 text-[11px] font-medium text-destructive">{galleryUploadError}</p>
+			{/if}
 		</div>
 		<div>
 			<label class={labelClass}>Slug (kosongkan untuk auto)</label>

@@ -23,3 +23,6 @@ vite.config.ts.timestamp-*
 
 # Prisma
 src/generated/prisma
+
+# Uploaded images (runtime)
+static/uploads

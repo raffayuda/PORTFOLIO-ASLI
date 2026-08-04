@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { X } from '@lucide/svelte';
+	import ImageUpload from '$lib/components/ImageUpload.svelte';
 
 	interface GalleryItem {
 		id: string;
@@ -130,8 +131,7 @@
 			<input type="number" bind:value={fSortOrder} class={inputClass} />
 		</div>
 		<div class="md:col-span-2">
-			<label class={labelClass}>URL Gambar *</label>
-			<input bind:value={fImageUrl} class={inputClass} placeholder="/images/certificates/cert-1.jpg atau https://..." />
+			<ImageUpload value={fImageUrl} label="Gambar *" />
 		</div>
 	</div>
 
